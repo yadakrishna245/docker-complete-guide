@@ -126,16 +126,147 @@ winget install Docker.DockerDesktop
 # Remove old versions
 sudo apt remove docker docker-engine docker.io containerd runc
 
-# Install using official script
-curl -fsSL https://get.docker.com -o get-docker.sh
-sudo sh get-docker.sh
+# Update packages and install prerequisites
+sudo apt update
+sudo apt install -y ca-certificates curl gnupg lsb-release
+
+# Add Docker's official GPG key
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+# Set up the repository
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+# Install Docker Engine
+sudo apt update
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # Add user to docker group (avoid sudo)
 sudo usermod -aG docker $USER
 
-# Start Docker
+# Start and enable Docker
 sudo systemctl start docker
 sudo systemctl enable docker
+```
+
+### Linux (RHEL / Red Hat Enterprise Linux)
+```bash
+# Remove old versions
+sudo yum remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine
+
+# Install required packages
+sudo yum install -y yum-utils
+
+# Add Docker repository
+sudo yum-config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
+
+# Install Docker Engine
+sudo yum install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+# Start and enable Docker
+sudo systemctl start docker
+sudo systemctl enable docker
+
+# Add user to docker group
+sudo usermod -aG docker $USER
+```
+
+### Linux (CentOS / CentOS Stream)
+```bash
+# Remove old versions
+sudo yum remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine
+
+# Install required packages
+sudo yum install -y yum-utils
+
+# Add Docker repository
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+# Install Docker Engine
+sudo yum install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+# Start and enable Docker
+sudo systemctl start docker
+sudo systemctl enable docker
+
+# Add user to docker group
+sudo usermod -aG docker $USER
+```
+
+### Linux (Fedora)
+```bash
+# Remove old versions
+sudo dnf remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-selinux docker-engine-selinux docker-engine
+
+# Install required packages
+sudo dnf -y install dnf-plugins-core
+
+# Add Docker repository
+sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+
+# Install Docker Engine
+sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+# Start and enable Docker
+sudo systemctl start docker
+sudo systemctl enable docker
+
+# Add user to docker group
+sudo usermod -aG docker $USER
+```
+
+### Linux (Amazon Linux 2)
+```bash
+# Install Docker
+sudo yum update -y
+sudo amazon-linux-extras install docker -y
+
+# Start and enable Docker
+sudo systemctl start docker
+sudo systemctl enable docker
+
+# Add user to docker group
+sudo usermod -aG docker $USER
+```
+
+### Linux (Amazon Linux 2023)
+```bash
+# Install Docker
+sudo yum update -y
+sudo yum install -y docker
+
+# Start and enable Docker
+sudo systemctl start docker
+sudo systemctl enable docker
+
+# Add user to docker group
+sudo usermod -aG docker $USER
+```
+
+### Linux (SUSE / openSUSE)
+```bash
+# Install Docker
+sudo zypper install -y docker
+
+# Start and enable Docker
+sudo systemctl start docker
+sudo systemctl enable docker
+
+# Add user to docker group
+sudo usermod -aG docker $USER
+```
+
+### Linux (Arch Linux)
+```bash
+# Install Docker
+sudo pacman -S docker
+
+# Start and enable Docker
+sudo systemctl start docker
+sudo systemctl enable docker
+
+# Add user to docker group
+sudo usermod -aG docker $USER
 ```
 
 ### macOS
@@ -144,12 +275,14 @@ sudo systemctl enable docker
 brew install --cask docker
 ```
 
-### Verify Installation
+### Verify Installation (All Platforms)
 ```bash
 docker --version
 docker info
 docker run hello-world
 ```
+
+> 💡 **Note:** After adding your user to the docker group, log out and log back in (or run `newgrp docker`) for changes to take effect.
 
 ---
 
@@ -1263,23 +1396,286 @@ docker push yourusername/myapp:latest
 docker pull yourusername/myapp:latest
 ```
 
-### Private Registries (AWS ECR, Azure ACR, GCR)
+### Private Registries (Azure ACR, GCR)
 ```bash
-# AWS ECR Login
-aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 123456789.dkr.ecr.us-east-1.amazonaws.com
-
-# Tag for ECR
-docker tag myapp:latest 123456789.dkr.ecr.us-east-1.amazonaws.com/myapp:latest
-
-# Push to ECR
-docker push 123456789.dkr.ecr.us-east-1.amazonaws.com/myapp:latest
-
 # Azure ACR Login
 az acr login --name myregistry
 
 # Google GCR Login
 gcloud auth configure-docker
 ```
+
+---
+
+## 🏗️ AWS ECR (Elastic Container Registry) — Complete Guide
+
+### What is ECR?
+
+AWS ECR is a fully managed Docker container registry that makes it easy to store, manage, and deploy Docker container images.
+
+```mermaid
+graph LR
+    Dev[👨‍💻 Developer] -->|docker push| ECR[AWS ECR<br/>Private Registry]
+    ECR -->|docker pull| ECS[AWS ECS<br/>Fargate / EC2]
+    ECR -->|docker pull| EKS[AWS EKS<br/>Kubernetes]
+    ECR -->|docker pull| EC2[EC2 Instance]
+    ECR -->|docker pull| Lambda[AWS Lambda<br/>Container Image]
+```
+
+### Why Use ECR?
+
+| Feature | Benefit |
+|---------|---------|
+| **Private & Secure** | Images stored in your AWS account, encrypted at rest |
+| **Integrated with AWS** | Works natively with ECS, EKS, Lambda, CodeBuild |
+| **Image Scanning** | Automatic vulnerability scanning |
+| **Lifecycle Policies** | Auto-delete old/untagged images to save costs |
+| **Cross-Region Replication** | Replicate images across regions for DR |
+| **IAM Access Control** | Fine-grained permissions using IAM policies |
+| **High Availability** | Managed by AWS, 99.9% SLA |
+| **No Rate Limits** | Unlike Docker Hub (100 pulls/6hr for free tier) |
+
+### Prerequisites
+```bash
+# Install AWS CLI
+# Windows
+msiexec.exe /i https://awscli.amazonaws.com/AWSCLIV2.msi
+
+# Linux
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+
+# Configure AWS credentials
+aws configure
+# Enter: AWS Access Key ID, Secret Access Key, Region, Output format
+```
+
+### Step 1: Create an ECR Repository
+```bash
+# Create a private repository
+aws ecr create-repository \
+  --repository-name my-app \
+  --region us-east-1 \
+  --image-scanning-configuration scanOnPush=true \
+  --encryption-configuration encryptionType=AES256
+
+# Output will show repositoryUri like:
+# 123456789012.dkr.ecr.us-east-1.amazonaws.com/my-app
+```
+
+### Step 2: Authenticate Docker with ECR
+```bash
+# Get login token and pipe to docker login
+aws ecr get-login-password --region us-east-1 | \
+  docker login --username AWS --password-stdin \
+  123456789012.dkr.ecr.us-east-1.amazonaws.com
+
+# Success message: "Login Succeeded"
+# Token is valid for 12 hours
+```
+
+### Step 3: Build Your Docker Image
+```bash
+# Build your image locally
+docker build -t my-app:latest .
+
+# Verify it was built
+docker images my-app
+```
+
+### Step 4: Tag the Image for ECR
+```bash
+# Tag with ECR repository URI
+docker tag my-app:latest 123456789012.dkr.ecr.us-east-1.amazonaws.com/my-app:latest
+
+# Tag with version number (recommended)
+docker tag my-app:latest 123456789012.dkr.ecr.us-east-1.amazonaws.com/my-app:v1.0.0
+
+# Tag with git commit SHA (for traceability)
+docker tag my-app:latest 123456789012.dkr.ecr.us-east-1.amazonaws.com/my-app:abc1234
+```
+
+### Step 5: Push Image to ECR
+```bash
+# Push the image
+docker push 123456789012.dkr.ecr.us-east-1.amazonaws.com/my-app:latest
+docker push 123456789012.dkr.ecr.us-east-1.amazonaws.com/my-app:v1.0.0
+
+# Push all tags at once
+docker push --all-tags 123456789012.dkr.ecr.us-east-1.amazonaws.com/my-app
+```
+
+### Step 6: Pull Image from ECR
+```bash
+# Pull on any machine (after authentication)
+aws ecr get-login-password --region us-east-1 | \
+  docker login --username AWS --password-stdin \
+  123456789012.dkr.ecr.us-east-1.amazonaws.com
+
+docker pull 123456789012.dkr.ecr.us-east-1.amazonaws.com/my-app:latest
+```
+
+### Step 7: List & Manage Images
+```bash
+# List all repositories
+aws ecr describe-repositories --region us-east-1
+
+# List images in a repository
+aws ecr list-images --repository-name my-app --region us-east-1
+
+# Describe image details (size, scan results, etc.)
+aws ecr describe-images --repository-name my-app --region us-east-1
+
+# Delete a specific image
+aws ecr batch-delete-image \
+  --repository-name my-app \
+  --image-ids imageTag=v1.0.0 \
+  --region us-east-1
+
+# Delete repository (must be empty or use --force)
+aws ecr delete-repository --repository-name my-app --force --region us-east-1
+```
+
+### Step 8: Image Scanning (Vulnerability Detection)
+```bash
+# Scan an image manually
+aws ecr start-image-scan \
+  --repository-name my-app \
+  --image-id imageTag=latest \
+  --region us-east-1
+
+# Get scan results
+aws ecr describe-image-scan-findings \
+  --repository-name my-app \
+  --image-id imageTag=latest \
+  --region us-east-1
+```
+
+### Step 9: Lifecycle Policies (Auto-Cleanup)
+```bash
+# Set policy to keep only last 10 images
+aws ecr put-lifecycle-policy \
+  --repository-name my-app \
+  --region us-east-1 \
+  --lifecycle-policy-text '{
+    "rules": [
+      {
+        "rulePriority": 1,
+        "description": "Keep only last 10 images",
+        "selection": {
+          "tagStatus": "any",
+          "countType": "imageCountMoreThan",
+          "countNumber": 10
+        },
+        "action": {
+          "type": "expire"
+        }
+      }
+    ]
+  }'
+
+# Delete untagged images older than 7 days
+aws ecr put-lifecycle-policy \
+  --repository-name my-app \
+  --region us-east-1 \
+  --lifecycle-policy-text '{
+    "rules": [
+      {
+        "rulePriority": 1,
+        "description": "Remove untagged images older than 7 days",
+        "selection": {
+          "tagStatus": "untagged",
+          "countType": "sinceImagePushed",
+          "countUnit": "days",
+          "countNumber": 7
+        },
+        "action": {
+          "type": "expire"
+        }
+      }
+    ]
+  }'
+```
+
+### Step 10: Cross-Region Replication
+```bash
+# Enable replication to another region
+aws ecr put-replication-configuration \
+  --replication-configuration '{
+    "rules": [
+      {
+        "destinations": [
+          {
+            "region": "eu-west-1",
+            "registryId": "123456789012"
+          }
+        ]
+      }
+    ]
+  }' \
+  --region us-east-1
+```
+
+### ECR with IAM Policy (Access Control)
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowPushPull",
+      "Effect": "Allow",
+      "Action": [
+        "ecr:GetDownloadUrlForLayer",
+        "ecr:BatchGetImage",
+        "ecr:BatchCheckLayerAvailability",
+        "ecr:PutImage",
+        "ecr:InitiateLayerUpload",
+        "ecr:UploadLayerPart",
+        "ecr:CompleteLayerUpload",
+        "ecr:GetAuthorizationToken"
+      ],
+      "Resource": "arn:aws:ecr:us-east-1:123456789012:repository/my-app"
+    },
+    {
+      "Sid": "AllowAuth",
+      "Effect": "Allow",
+      "Action": "ecr:GetAuthorizationToken",
+      "Resource": "*"
+    }
+  ]
+}
+```
+
+### ECR Complete Workflow Summary
+
+```mermaid
+graph TD
+    A[1. Create ECR Repo] --> B[2. Authenticate Docker]
+    B --> C[3. Build Image Locally]
+    C --> D[4. Tag for ECR]
+    D --> E[5. Push to ECR]
+    E --> F[6. Deploy to AWS Services]
+    F --> G[ECS / EKS / Lambda / EC2]
+    E --> H[7. Set Lifecycle Policy]
+    E --> I[8. Enable Scanning]
+    E --> J[9. Cross-Region Replication]
+```
+
+### Quick ECR Commands Cheat Sheet
+
+| Task | Command |
+|------|---------|
+| Create repo | `aws ecr create-repository --repository-name NAME` |
+| Login | `aws ecr get-login-password \| docker login --username AWS --password-stdin ACCOUNT.dkr.ecr.REGION.amazonaws.com` |
+| Tag image | `docker tag IMAGE:TAG ACCOUNT.dkr.ecr.REGION.amazonaws.com/REPO:TAG` |
+| Push | `docker push ACCOUNT.dkr.ecr.REGION.amazonaws.com/REPO:TAG` |
+| Pull | `docker pull ACCOUNT.dkr.ecr.REGION.amazonaws.com/REPO:TAG` |
+| List repos | `aws ecr describe-repositories` |
+| List images | `aws ecr list-images --repository-name NAME` |
+| Scan image | `aws ecr start-image-scan --repository-name NAME --image-id imageTag=TAG` |
+| Delete image | `aws ecr batch-delete-image --repository-name NAME --image-ids imageTag=TAG` |
+| Delete repo | `aws ecr delete-repository --repository-name NAME --force` |
 
 ### Tagging Best Practices
 ```bash
