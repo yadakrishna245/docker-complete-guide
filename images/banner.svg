@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 200" font-family="Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d1117"/>
+      <stop offset="50%" style="stop-color:#161b22"/>
+      <stop offset="100%" style="stop-color:#0d1117"/>
+    </linearGradient>
+    <linearGradient id="docker-blue" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2196F3"/>
+      <stop offset="100%" style="stop-color:#00BCD4"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="200" fill="url(#bg)" rx="12"/>
+  
+  <!-- Animated background particles -->
+  <circle cx="100" cy="50" r="2" fill="#3b82f6" opacity="0.3">
+    <animate attributeName="cy" values="50;150;50" dur="8s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="250" cy="150" r="1.5" fill="#10b981" opacity="0.3">
+    <animate attributeName="cy" values="150;30;150" dur="6s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="700" cy="80" r="2" fill="#f59e0b" opacity="0.3">
+    <animate attributeName="cy" values="80;170;80" dur="7s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="800" cy="120" r="1.5" fill="#ec4899" opacity="0.3">
+    <animate attributeName="cy" values="120;40;120" dur="5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="400" cy="30" r="2" fill="#8b5cf6" opacity="0.3">
+    <animate attributeName="cy" values="30;170;30" dur="9s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Docker whale icon (simplified) -->
+  <g transform="translate(80, 60)">
+    <rect x="0" y="30" width="18" height="15" fill="#2196F3" rx="2">
+      <animate attributeName="y" values="30;28;30" dur="2s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="22" y="30" width="18" height="15" fill="#2196F3" rx="2">
+      <animate attributeName="y" values="30;28;30" dur="2s" begin="0.2s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="44" y="30" width="18" height="15" fill="#2196F3" rx="2">
+      <animate attributeName="y" values="30;28;30" dur="2s" begin="0.4s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="22" y="12" width="18" height="15" fill="#2196F3" rx="2">
+      <animate attributeName="y" values="12;10;12" dur="2s" begin="0.3s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="44" y="12" width="18" height="15" fill="#2196F3" rx="2">
+      <animate attributeName="y" values="12;10;12" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+    </rect>
+    <ellipse cx="40" cy="58" rx="50" ry="20" fill="#1976D2" opacity="0.8">
+      <animate attributeName="ry" values="20;22;20" dur="3s" repeatCount="indefinite"/>
+    </ellipse>
+  </g>
+  
+  <!-- Main Title -->
+  <text x="450" y="85" text-anchor="middle" fill="url(#docker-blue)" font-size="36" font-weight="bold">
+    Docker Complete Guide
+    <animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite"/>
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="450" y="115" text-anchor="middle" fill="#9ca3af" font-size="14">Beginner to Advanced | Commands | Dockerfiles | Compose | ECR | Security</text>
+  
+  <!-- Author -->
+  <text x="450" y="150" text-anchor="middle" fill="#6b7280" font-size="12">By</text>
+  <text x="450" y="170" text-anchor="middle" fill="#58a6ff" font-size="16" font-weight="bold">Krishna Yada</text>
+  
+  <!-- Tech badges on right -->
+  <rect x="730" y="70" width="60" height="22" fill="#232F3E" stroke="#FF9900" stroke-width="1" rx="4"/>
+  <text x="760" y="85" text-anchor="middle" fill="#FF9900" font-size="10" font-weight="bold">AWS</text>
+  
+  <rect x="800" y="70" width="60" height="22" fill="#1a1a2e" stroke="#0db7ed" stroke-width="1" rx="4"/>
+  <text x="830" y="85" text-anchor="middle" fill="#0db7ed" font-size="10" font-weight="bold">Docker</text>
+  
+  <rect x="730" y="100" width="60" height="22" fill="#1a1a2e" stroke="#FCC624" stroke-width="1" rx="4"/>
+  <text x="760" y="115" text-anchor="middle" fill="#FCC624" font-size="10" font-weight="bold">Linux</text>
+  
+  <rect x="800" y="100" width="60" height="22" fill="#1a1a2e" stroke="#10b981" stroke-width="1" rx="4"/>
+  <text x="830" y="115" text-anchor="middle" fill="#10b981" font-size="10" font-weight="bold">DevOps</text>
+</svg>

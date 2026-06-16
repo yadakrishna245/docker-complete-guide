@@ -1,5 +1,9 @@
 # 🐳 Docker Complete Guide
 
+<p align="center">
+  <img src="images/banner.svg" alt="Docker Complete Guide by Krishna Yada" width="100%"/>
+</p>
+
 ### By [Krishna Yada](https://github.com/yadakrishna245) | Senior System Administrator | AWS | DevOps
 
 > A comprehensive beginner-to-advanced Docker guide for day-to-day use. All commands with explanations and examples.
@@ -87,18 +91,12 @@ Docker is a platform that packages applications into **containers** — lightwei
 Docker uses a **client-server architecture**:
 
 <p align="center">
-  <img src="https://docs.docker.com/get-started/images/docker-architecture.webp" alt="Docker Architecture" width="800"/>
+  <img src="images/docker-architecture.svg" alt="Docker Architecture" width="100%"/>
 </p>
 
-```mermaid
-graph LR
-    A[Docker Client<br/>docker CLI] -->|REST API| B[Docker Daemon<br/>dockerd]
-    B --> C[Containers]
-    B --> D[Images]
-    B --> E[Networks]
-    B --> F[Volumes]
-    B -->|pull/push| G[Docker Registry<br/>Docker Hub / ECR / ACR]
-```
+<p align="center">
+  <img src="https://docs.docker.com/get-started/images/docker-architecture.webp" alt="Docker Official Architecture" width="700"/>
+</p>
 
 - **Docker Client** — CLI tool you interact with (`docker` command)
 - **Docker Daemon** — Background service that manages containers, images, networks, volumes
@@ -106,23 +104,9 @@ graph LR
 
 ### Docker vs Virtual Machines
 
-```mermaid
-graph TB
-    subgraph Docker["Docker Container"]
-        direction TB
-        D_Infra[Infrastructure] --> D_OS[Host OS] --> D_Docker[Docker Engine]
-        D_Docker --> D_App1[App 1]
-        D_Docker --> D_App2[App 2]
-        D_Docker --> D_App3[App 3]
-    end
-    subgraph VM["Virtual Machine"]
-        direction TB
-        VM_Infra[Infrastructure] --> VM_Hyp[Hypervisor]
-        VM_Hyp --> VM_OS1[Guest OS] --> VM_App1[App 1]
-        VM_Hyp --> VM_OS2[Guest OS] --> VM_App2[App 2]
-        VM_Hyp --> VM_OS3[Guest OS] --> VM_App3[App 3]
-    end
-```
+<p align="center">
+  <img src="images/containers-vs-vms.svg" alt="Containers vs Virtual Machines" width="100%"/>
+</p>
 
 | Feature | Docker Container | Virtual Machine |
 |---------|-----------------|-----------------|
@@ -1729,20 +1713,9 @@ docker tag myapp:latest myapp:production
 
 ## 🔄 Real-World Workflows
 
-```mermaid
-graph LR
-    subgraph Dev["Development"]
-        Code[📝 Write Code] --> Build[🔨 docker build]
-        Build --> Test[🧪 docker run<br/>test locally]
-    end
-    subgraph CI["CI/CD Pipeline"]
-        Test --> Push[📤 docker push<br/>to registry]
-    end
-    subgraph Prod["Production"]
-        Push --> Pull[📥 docker pull]
-        Pull --> Deploy[🚀 docker run<br/>in production]
-    end
-```
+<p align="center">
+  <img src="images/docker-workflow.svg" alt="Docker Workflow: Build Ship Run" width="100%"/>
+</p>
 
 ### Development Workflow
 ```bash
