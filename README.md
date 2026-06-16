@@ -18,19 +18,23 @@
 
 ```
 docker-complete-guide/
-├── README.md                    # Complete Docker guide (you are here)
-├── cheatsheet.md                # Printable quick reference
-├── interview-questions.md       # Docker interview Q&A
-├── examples/                    # Ready-to-use Dockerfiles
+├── README.md                          # Complete Docker guide (you are here)
+├── cheatsheet.md                      # Printable quick reference
+├── interview-questions.md             # Docker interview Q&A (33 questions)
+├── docker-security.md                 # Security best practices & tools
+├── docker-troubleshooting-flowchart.md # Visual troubleshooting decision trees
+├── docker-swarm.md                    # Docker Swarm orchestration guide
+├── examples/                          # Ready-to-use Dockerfiles
 │   ├── nodejs/Dockerfile
 │   ├── python/Dockerfile
 │   ├── java/Dockerfile
 │   └── nginx/Dockerfile
-├── docker-compose-examples/     # Real-world compose files
+├── docker-compose-examples/           # Real-world compose stacks
 │   ├── mern-stack/
 │   ├── wordpress/
-│   └── nginx-proxy/
-├── .github/workflows/           # CI/CD pipeline
+│   ├── nginx-proxy/
+│   └── monitoring/                    # Prometheus + Grafana + cAdvisor
+├── .github/workflows/                 # CI/CD pipeline
 │   └── docker-build-push.yml
 ├── CONTRIBUTING.md
 └── LICENSE
