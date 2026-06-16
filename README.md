@@ -1,9 +1,40 @@
 # 🐳 Docker Complete Guide
 
+### By [Krishna Yada](https://github.com/yadakrishna245) | Senior System Administrator | AWS | DevOps
+
 > A comprehensive beginner-to-advanced Docker guide for day-to-day use. All commands with explanations and examples.
 
 [![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
+[![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonwebservices&logoColor=white)](https://aws.amazon.com/)
+[![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)](https://www.linux.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/yadakrishna245/docker-complete-guide?style=for-the-badge)](https://github.com/yadakrishna245/docker-complete-guide/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/yadakrishna245/docker-complete-guide?style=for-the-badge)](https://github.com/yadakrishna245/docker-complete-guide/network)
+[![GitHub last commit](https://img.shields.io/github/last-commit/yadakrishna245/docker-complete-guide?style=for-the-badge)](https://github.com/yadakrishna245/docker-complete-guide/commits/main)
+
+---
+
+### 📂 Repo Structure
+
+```
+docker-complete-guide/
+├── README.md                    # Complete Docker guide (you are here)
+├── cheatsheet.md                # Printable quick reference
+├── interview-questions.md       # Docker interview Q&A
+├── examples/                    # Ready-to-use Dockerfiles
+│   ├── nodejs/Dockerfile
+│   ├── python/Dockerfile
+│   ├── java/Dockerfile
+│   └── nginx/Dockerfile
+├── docker-compose-examples/     # Real-world compose files
+│   ├── mern-stack/
+│   ├── wordpress/
+│   └── nginx-proxy/
+├── .github/workflows/           # CI/CD pipeline
+│   └── docker-build-push.yml
+├── CONTRIBUTING.md
+└── LICENSE
+```
 
 ---
 
@@ -1967,7 +1998,7 @@ docker build --check .
 
 ## 🤝 Contributing
 
-Feel free to open issues or submit pull requests to improve this guide!
+Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ## 📄 License
 
@@ -1975,4 +2006,22 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-⭐ **If this guide helped you, give it a star!**
+## ⭐ Support This Project
+
+If this guide helped you, please **give it a star** ⭐ — it helps others find this resource!
+
+[![Star this repo](https://img.shields.io/github/stars/yadakrishna245/docker-complete-guide?style=social)](https://github.com/yadakrishna245/docker-complete-guide)
+
+### 🔗 Connect with Me
+
+| Platform | Link |
+|----------|------|
+| GitHub | [yadakrishna245](https://github.com/yadakrishna245) |
+| LinkedIn | [Krishna Yada](https://www.linkedin.com/in/krishna-yada-8a8441239/) |
+
+---
+
+<p align="center">
+  Made with ❤️ by <strong>Krishna Yada</strong><br/>
+  Senior System Administrator | AWS Certified Solutions Architect | DevOps
+</p>
