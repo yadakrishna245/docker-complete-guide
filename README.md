@@ -23,6 +23,7 @@
 - [Logs & Debugging](#-logs--debugging)
 - [Resource Management](#-resource-management)
 - [Docker Hub & Registries](#-docker-hub--registries)
+- [AWS ECR (Complete Guide)](#%EF%B8%8F-aws-ecr-elastic-container-registry--complete-guide)
 - [Real-World Workflows](#-real-world-workflows)
 - [Troubleshooting](#-troubleshooting)
 - [Quick Reference](#-quick-reference)
