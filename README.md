@@ -50,22 +50,18 @@ Docker is a platform that packages applications into **containers** — lightwei
 
 Docker uses a **client-server architecture**:
 
-```
-┌─────────────────┐         ┌─────────────────────────────────────┐
-│  Docker Client  │         │          Docker Host                 │
-│  (docker CLI)   │──REST──▶│  Docker Daemon (dockerd)            │
-│                 │   API   │    ├── Container Runtime             │
-└─────────────────┘         │    ├── Image Manager                │
-                            │    ├── Network Driver                │
-                            │    └── Volume Driver                 │
-                            └─────────────────────────────────────┘
-                                          │
-                                          ▼
-                            ┌─────────────────────────┐
-                            │    Docker Registry       │
-                            │    (Docker Hub, ECR,     │
-                            │     ACR, GCR, etc.)     │
-                            └─────────────────────────┘
+<p align="center">
+  <img src="https://docs.docker.com/get-started/images/docker-architecture.webp" alt="Docker Architecture" width="800"/>
+</p>
+
+```mermaid
+graph LR
+    A[Docker Client<br/>docker CLI] -->|REST API| B[Docker Daemon<br/>dockerd]
+    B --> C[Containers]
+    B --> D[Images]
+    B --> E[Networks]
+    B --> F[Volumes]
+    B -->|pull/push| G[Docker Registry<br/>Docker Hub / ECR / ACR]
 ```
 
 - **Docker Client** — CLI tool you interact with (`docker` command)
@@ -73,6 +69,10 @@ Docker uses a **client-server architecture**:
 - **Docker Registry** — Stores and distributes Docker images
 
 ### Docker vs Virtual Machines
+
+<p align="center">
+  <img src="https://images.contentstack.io/v3/assets/blt300387d93dabf50e/bltb6200bc085503718/5e1f209a63d1b6503160c6d5/containers-vs-virtual-machines.jpg" alt="Containers vs Virtual Machines" width="750"/>
+</p>
 
 | Feature | Docker Container | Virtual Machine |
 |---------|-----------------|-----------------|
@@ -82,6 +82,24 @@ Docker uses a **client-server architecture**:
 | Isolation | Process-level | Hardware-level |
 | Performance | Near-native | Overhead |
 | Density | 100s per host | 10s per host |
+
+```mermaid
+graph TB
+    subgraph VM["Virtual Machine"]
+        direction TB
+        VM_Infra[Infrastructure] --> VM_Hyp[Hypervisor]
+        VM_Hyp --> VM_OS1[Guest OS] --> VM_App1[App 1]
+        VM_Hyp --> VM_OS2[Guest OS] --> VM_App2[App 2]
+        VM_Hyp --> VM_OS3[Guest OS] --> VM_App3[App 3]
+    end
+    subgraph Docker["Docker Container"]
+        direction TB
+        D_Infra[Infrastructure] --> D_OS[Host OS] --> D_Docker[Docker Engine]
+        D_Docker --> D_App1[App 1]
+        D_Docker --> D_App2[App 2]
+        D_Docker --> D_App3[App 3]
+    end
+```
 
 ---
 
@@ -143,6 +161,30 @@ docker run hello-world
 ## 🖼️ Docker Images
 
 Images are read-only templates used to create containers.
+
+```mermaid
+graph TB
+    subgraph Registry["Docker Registry (Docker Hub)"]
+        I1[nginx:latest]
+        I2[postgres:15]
+        I3[node:18]
+    end
+    subgraph Host["Docker Host"]
+        I1 -->|docker pull| L1[Local Image: nginx]
+        I2 -->|docker pull| L2[Local Image: postgres]
+        L1 -->|docker run| C1[Container 1]
+        L1 -->|docker run| C2[Container 2]
+        L2 -->|docker run| C3[Container 3]
+    end
+```
+
+### Image Layers
+
+<p align="center">
+  <img src="https://docs.docker.com/get-started/docker-concepts/building-images/images/container_image_layers.webp" alt="Docker Image Layers" width="600"/>
+</p>
+
+> Each instruction in a Dockerfile creates a new layer. Layers are cached and reused to speed up builds.
 
 ### List Images
 ```bash
@@ -245,9 +287,19 @@ docker load -i myapp.tar
 Containers are running instances of images.
 
 ### Container Lifecycle
-```
-Created ──▶ Running ──▶ Paused ──▶ Running ──▶ Stopped ──▶ Removed
-  (create)    (start)    (pause)   (unpause)    (stop)      (rm)
+
+```mermaid
+stateDiagram-v2
+    [*] --> Created: docker create
+    Created --> Running: docker start
+    Running --> Paused: docker pause
+    Paused --> Running: docker unpause
+    Running --> Stopped: docker stop
+    Stopped --> Running: docker start
+    Running --> Removed: docker rm -f
+    Stopped --> Removed: docker rm
+    Created --> Removed: docker rm
+    Removed --> [*]
 ```
 
 ### List Containers
@@ -355,6 +407,14 @@ docker run -it ubuntu:latest /bin/bash
 ```
 
 ### Port Mapping (-p)
+
+```mermaid
+graph LR
+    User[👤 User<br/>localhost:8080] -->|Request| HP[Host Port<br/>8080]
+    HP -->|Maps to| CP[Container Port<br/>80]
+    CP --> App[🌐 Nginx<br/>inside container]
+```
+
 ```bash
 # Map host:container port
 docker run -d -p 8080:80 nginx
@@ -504,6 +564,14 @@ docker run -d -p 6379:6379 --name redis redis:7-alpine
 
 A Dockerfile is a text file with instructions to build a Docker image.
 
+```mermaid
+graph LR
+    A[Dockerfile] -->|docker build| B[Image]
+    B -->|docker run| C[Container]
+    C -->|docker commit| D[New Image]
+    B -->|docker push| E[Registry]
+```
+
 ### All Dockerfile Instructions
 
 | Instruction | Purpose | Example |
@@ -550,6 +618,18 @@ CMD ["node", "index.js"]
 ```
 
 ### Multi-Stage Build (Reduces Image Size)
+
+```mermaid
+graph LR
+    subgraph Stage1["Stage 1: Builder (heavy)"]
+        S1[node:18 full image<br/>~900MB] --> B1[Install deps + Build]
+    end
+    subgraph Stage2["Stage 2: Production (light)"]
+        S2[node:18-alpine<br/>~130MB] --> B2[Copy only built output]
+    end
+    B1 -->|COPY --from=builder| B2
+    B2 --> Final[Final Image<br/>~150MB ✅]
+```
 ```dockerfile
 # Stage 1: Build
 FROM node:18 AS builder
@@ -645,6 +725,26 @@ FROM gcr.io/distroless/nodejs18-debian12
 ## 🎼 Docker Compose
 
 Docker Compose manages multi-container applications with a single YAML file.
+
+```mermaid
+graph TB
+    subgraph DockerCompose["docker-compose.yml"]
+        direction TB
+        DC[Docker Compose]
+    end
+    subgraph Services["Services"]
+        DC --> W[🌐 web<br/>nginx:latest<br/>Port 8080]
+        DC --> A[⚙️ api<br/>node:18<br/>Port 3000]
+        DC --> D[🗄️ db<br/>postgres:15<br/>Port 5432]
+        DC --> R[📦 redis<br/>redis:7<br/>Port 6379]
+    end
+    subgraph Storage["Volumes"]
+        D --> V1[(postgres_data)]
+    end
+    W -->|depends_on| A
+    A -->|depends_on| D
+    A -->|depends_on| R
+```
 
 ### Basic docker-compose.yml
 ```yaml
@@ -811,6 +911,27 @@ services:
 
 Docker networking allows containers to communicate with each other and the outside world.
 
+```mermaid
+graph TB
+    Internet[🌍 Internet]
+    subgraph Host["Docker Host"]
+        subgraph Bridge["bridge network (default)"]
+            C1[Container 1<br/>172.17.0.2]
+            C2[Container 2<br/>172.17.0.3]
+        end
+        subgraph Custom["custom network (user-defined)"]
+            C3[Container 3<br/>app]
+            C4[Container 4<br/>db]
+        end
+        HostNet[Host Network<br/>No isolation]
+    end
+    Internet <-->|Port mapping| Bridge
+    C3 <-->|DNS by name| C4
+    C1 -.-|No DNS resolution| C2
+```
+
+> ⚠️ **Tip:** Use custom networks over the default bridge — they provide automatic DNS resolution between containers by name.
+
 ### Network Drivers
 
 | Driver | Use Case | Description |
@@ -883,6 +1004,22 @@ docker run -d --name api --network app-network \
 ## 💾 Docker Volumes
 
 Volumes persist data beyond the container lifecycle. Without them, data is lost when the container is removed.
+
+```mermaid
+graph LR
+    subgraph Container["Container"]
+        App[Application]
+        FS[Container Filesystem<br/>❌ Lost on rm]
+    end
+    subgraph Persistence["Persistent Storage"]
+        V1[(Named Volume<br/>Docker managed<br/>✅ Survives rm)]
+        V2[/Bind Mount<br/>Host directory<br/>✅ Survives rm/]
+        V3[tmpfs<br/>Memory only<br/>❌ Lost on stop]
+    end
+    App --> V1
+    App --> V2
+    App --> V3
+```
 
 ### Volume Types
 
@@ -1163,6 +1300,21 @@ docker tag myapp:latest myapp:production
 ---
 
 ## 🔄 Real-World Workflows
+
+```mermaid
+graph LR
+    subgraph Dev["Development"]
+        Code[📝 Write Code] --> Build[🔨 docker build]
+        Build --> Test[🧪 docker run<br/>test locally]
+    end
+    subgraph CI["CI/CD Pipeline"]
+        Test --> Push[📤 docker push<br/>to registry]
+    end
+    subgraph Prod["Production"]
+        Push --> Pull[📥 docker pull]
+        Pull --> Deploy[🚀 docker run<br/>in production]
+    end
+```
 
 ### Development Workflow
 ```bash
