@@ -70,9 +70,23 @@ graph LR
 
 ### Docker vs Virtual Machines
 
-<p align="center">
-  <img src="https://images.contentstack.io/v3/assets/blt300387d93dabf50e/bltb6200bc085503718/5e1f209a63d1b6503160c6d5/containers-vs-virtual-machines.jpg" alt="Containers vs Virtual Machines" width="750"/>
-</p>
+```mermaid
+graph TB
+    subgraph Docker["Docker Container"]
+        direction TB
+        D_Infra[Infrastructure] --> D_OS[Host OS] --> D_Docker[Docker Engine]
+        D_Docker --> D_App1[App 1]
+        D_Docker --> D_App2[App 2]
+        D_Docker --> D_App3[App 3]
+    end
+    subgraph VM["Virtual Machine"]
+        direction TB
+        VM_Infra[Infrastructure] --> VM_Hyp[Hypervisor]
+        VM_Hyp --> VM_OS1[Guest OS] --> VM_App1[App 1]
+        VM_Hyp --> VM_OS2[Guest OS] --> VM_App2[App 2]
+        VM_Hyp --> VM_OS3[Guest OS] --> VM_App3[App 3]
+    end
+```
 
 | Feature | Docker Container | Virtual Machine |
 |---------|-----------------|-----------------|
@@ -82,24 +96,6 @@ graph LR
 | Isolation | Process-level | Hardware-level |
 | Performance | Near-native | Overhead |
 | Density | 100s per host | 10s per host |
-
-```mermaid
-graph TB
-    subgraph VM["Virtual Machine"]
-        direction TB
-        VM_Infra[Infrastructure] --> VM_Hyp[Hypervisor]
-        VM_Hyp --> VM_OS1[Guest OS] --> VM_App1[App 1]
-        VM_Hyp --> VM_OS2[Guest OS] --> VM_App2[App 2]
-        VM_Hyp --> VM_OS3[Guest OS] --> VM_App3[App 3]
-    end
-    subgraph Docker["Docker Container"]
-        direction TB
-        D_Infra[Infrastructure] --> D_OS[Host OS] --> D_Docker[Docker Engine]
-        D_Docker --> D_App1[App 1]
-        D_Docker --> D_App2[App 2]
-        D_Docker --> D_App3[App 3]
-    end
-```
 
 ---
 
