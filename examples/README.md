@@ -4,6 +4,8 @@
 
 ## Available Examples
 
+### 🚀 Application Dockerfiles
+
 | Language/Framework | Image Size | Base Image | Key Features |
 |-------------------|-----------|------------|--------------|
 | [Node.js](nodejs/Dockerfile) | ~150MB | node:18-alpine | Multi-stage, non-root, healthcheck |
@@ -18,6 +20,16 @@
 | [PHP (Laravel)](laravel/Dockerfile) | ~120MB | php:8.3-fpm-alpine | Nginx + FPM, OPcache, Composer |
 | [Ruby (Rails)](rails/Dockerfile) | ~250MB | ruby:3.3-slim | Puma, asset precompile, 3-stage |
 | [Nginx](nginx/Dockerfile) | ~25MB | nginx:alpine | Custom config, security headers |
+
+### 🐧 Linux / SysAdmin / DevOps Toolbox
+
+| Image | Base | Use Case |
+|-------|------|----------|
+| [Ubuntu DevOps](ubuntu-devops/Dockerfile) | ubuntu:24.04 | Full DevOps toolbox (AWS CLI, Docker, kubectl, Terraform, Ansible) |
+| [RHEL/Rocky SysAdmin](rhel-sysadmin/Dockerfile) | rockylinux:9 | Enterprise Linux with admin tools (mirrors RHEL 9) |
+| [Amazon Linux 2023](amazon-linux/Dockerfile) | amazonlinux:2023 | AWS-native ops (mirrors EC2, eksctl, SSM) |
+| [Alpine Debug](alpine-debug/Dockerfile) | alpine:3.19 | Minimal ~15MB network troubleshooting container |
+| [Jenkins Agent](jenkins-agent/Dockerfile) | ubuntu:22.04 | CI/CD agent (Java, Node, Python, Docker, Trivy, SonarQube) |
 
 ## Production Best Practices Used
 
