@@ -1,4 +1,4 @@
-# 🐳 Docker Complete Guide
+﻿# 🐳 Docker Complete Guide
 
 <p align="center">
   <img src="images/banner.svg" alt="Docker Complete Guide by Krishna Yada" width="100%"/>
@@ -20,7 +20,7 @@
 
 ---
 
-[? Back to top](#-docker-complete-guide)
+[🔝 Back to Top](#-docker-complete-guide)
 
 ### 📂 Repo Structure
 
@@ -53,7 +53,7 @@ docker-complete-guide/
 
 ---
 
-[? Back to top](#-docker-complete-guide)
+[🔝 Back to Top](#-docker-complete-guide)
 
 ## 📑 Table of Contents
 
@@ -78,7 +78,7 @@ docker-complete-guide/
 
 ---
 
-[? Back to top](#-docker-complete-guide)
+[🔝 Back to Top](#-docker-complete-guide)
 
 ## 🐳 What is Docker?
 
@@ -97,7 +97,7 @@ Docker is a platform that packages applications into **containers** — lightwei
 
 ---
 
-[? Back to top](#-docker-complete-guide)
+[🔝 Back to Top](#-docker-complete-guide)
 
 ## ⚙️ How Docker Works
 
@@ -132,7 +132,7 @@ Docker uses a **client-server architecture**:
 
 ---
 
-[? Back to top](#-docker-complete-guide)
+[🔝 Back to Top](#-docker-complete-guide)
 
 ## 💡 Why Use Docker?
 
@@ -147,7 +147,7 @@ Docker uses a **client-server architecture**:
 
 ---
 
-[? Back to top](#-docker-complete-guide)
+[🔝 Back to Top](#-docker-complete-guide)
 
 ## 📥 Installation
 
@@ -323,7 +323,7 @@ docker run hello-world
 
 ---
 
-[? Back to top](#-docker-complete-guide)
+[🔝 Back to Top](#-docker-complete-guide)
 
 
 ## 🖼️ Docker Images
@@ -437,7 +437,7 @@ docker load -i myapp.tar
 
 ---
 
-[? Back to top](#-docker-complete-guide)
+[🔝 Back to Top](#-docker-complete-guide)
 
 
 ## 📦 Docker Containers
@@ -531,7 +531,7 @@ docker rename old_name new_name
 
 ---
 
-[? Back to top](#-docker-complete-guide)
+[🔝 Back to Top](#-docker-complete-guide)
 
 
 ## 🚀 Docker Run (Complete Guide)
@@ -706,7 +706,7 @@ docker run -d -p 6379:6379 --name redis redis:7-alpine
 
 ---
 
-[? Back to top](#-docker-complete-guide)
+[🔝 Back to Top](#-docker-complete-guide)
 
 
 ## 📝 Dockerfile
@@ -858,7 +858,7 @@ FROM gcr.io/distroless/nodejs18-debian12
 
 ---
 
-[? Back to top](#-docker-complete-guide)
+[🔝 Back to Top](#-docker-complete-guide)
 
 
 ## 🎼 Docker Compose
@@ -1029,7 +1029,7 @@ services:
 
 ---
 
-[? Back to top](#-docker-complete-guide)
+[🔝 Back to Top](#-docker-complete-guide)
 
 
 ## 🌐 Docker Networking
@@ -1110,7 +1110,7 @@ docker run -d --name api --network app-network \
 
 ---
 
-[? Back to top](#-docker-complete-guide)
+[🔝 Back to Top](#-docker-complete-guide)
 
 
 ## 💾 Docker Volumes
@@ -1194,7 +1194,7 @@ docker run --rm -v shared-data:/data alpine cat /data/log.txt
 
 ---
 
-[? Back to top](#-docker-complete-guide)
+[🔝 Back to Top](#-docker-complete-guide)
 
 
 ## 🔍 Logs & Debugging
@@ -1292,7 +1292,7 @@ docker info
 
 ---
 
-[? Back to top](#-docker-complete-guide)
+[🔝 Back to Top](#-docker-complete-guide)
 
 ## 📊 Resource Management
 
@@ -1346,7 +1346,7 @@ docker system prune -a --volumes
 
 ---
 
-[? Back to top](#-docker-complete-guide)
+[🔝 Back to Top](#-docker-complete-guide)
 
 
 ## 🏪 Docker Hub & Registries
@@ -1384,7 +1384,7 @@ gcloud auth configure-docker
 
 ---
 
-[? Back to top](#-docker-complete-guide)
+[🔝 Back to Top](#-docker-complete-guide)
 
 ## 🏗️ AWS ECR (Elastic Container Registry) — Complete Guide
 
@@ -1656,7 +1656,7 @@ docker tag myapp:latest myapp:production
 
 ---
 
-[? Back to top](#-docker-complete-guide)
+[🔝 Back to Top](#-docker-complete-guide)
 
 ## 🔄 Real-World Workflows
 
@@ -1761,7 +1761,7 @@ volumes:
 
 ---
 
-[? Back to top](#-docker-complete-guide)
+[🔝 Back to Top](#-docker-complete-guide)
 
 ## 🛠️ Troubleshooting
 
@@ -1859,7 +1859,7 @@ docker build --check .
 
 ---
 
-[? Back to top](#-docker-complete-guide)
+[🔝 Back to Top](#-docker-complete-guide)
 
 ## 📋 Quick Reference
 
@@ -1914,7 +1914,7 @@ docker build --check .
 
 ---
 
-[? Back to top](#-docker-complete-guide)
+[🔝 Back to Top](#-docker-complete-guide)
 
 ## 📚 Additional Resources
 
@@ -1926,7 +1926,7 @@ docker build --check .
 
 ---
 
-[? Back to top](#-docker-complete-guide)
+[🔝 Back to Top](#-docker-complete-guide)
 
 ## 🤝 Contributing
 
@@ -1938,7 +1938,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-[? Back to top](#-docker-complete-guide)
+[🔝 Back to Top](#-docker-complete-guide)
 
 ## ⭐ Support This Project
 
@@ -1955,7 +1955,7 @@ If this guide helped you, please **give it a star** ⭐ — it helps others find
 
 ---
 
-[? Back to top](#-docker-complete-guide)
+[🔝 Back to Top](#-docker-complete-guide)
 
 <p align="center">
   Made with ❤️ by <strong>Krishna Yada</strong><br/>
