@@ -1,39 +1,51 @@
-# 📁 Example Dockerfiles
+# 📝 Production-Ready Dockerfiles
 
-> Production-ready Dockerfiles for popular frameworks. Copy and customize for your project.
+> Real-world, production-grade Dockerfiles for popular frameworks and languages.
 
 ## Available Examples
 
-| Framework | Dockerfile | Key Features |
-|-----------|-----------|--------------|
-| **Node.js** | [nodejs/Dockerfile](nodejs/Dockerfile) | Multi-stage build, Alpine, non-root user, health check |
-| **Python** | [python/Dockerfile](python/Dockerfile) | Slim base, pip caching, non-root user, health check |
-| **Java** | [java/Dockerfile](java/Dockerfile) | Maven multi-stage, JRE-only production, Spring Boot |
-| **Nginx** | [nginx/Dockerfile](nginx/Dockerfile) | Static site + reverse proxy config |
+| Language/Framework | Image Size | Base Image | Key Features |
+|-------------------|-----------|------------|--------------|
+| [Node.js](nodejs/Dockerfile) | ~150MB | node:18-alpine | Multi-stage, non-root, healthcheck |
+| [Next.js/React](nextjs/Dockerfile) | ~120MB | node:20-alpine | 3-stage, standalone output, static files |
+| [Python (FastAPI)](python/Dockerfile) | ~180MB | python:3.11-slim | Non-root, healthcheck, uvicorn |
+| [Django](django/Dockerfile) | ~200MB | python:3.12-slim | Gunicorn, collectstatic, PostgreSQL |
+| [Go](golang/Dockerfile) | ~10MB | distroless/static | Scratch build, zero OS, CA certs |
+| [Rust](rust/Dockerfile) | ~5MB | scratch | Static binary, zero dependencies |
+| [Java (Spring Boot)](spring-boot/Dockerfile) | ~250MB | eclipse-temurin:21-jre-alpine | Layered JAR, container-aware JVM |
+| [Java (Generic)](java/Dockerfile) | ~200MB | eclipse-temurin:17-jre-alpine | Multi-stage, Maven build |
+| [.NET 8](dotnet/Dockerfile) | ~100MB | aspnet:8.0-alpine | AOT-ready, non-root |
+| [PHP (Laravel)](laravel/Dockerfile) | ~120MB | php:8.3-fpm-alpine | Nginx + FPM, OPcache, Composer |
+| [Ruby (Rails)](rails/Dockerfile) | ~250MB | ruby:3.3-slim | Puma, asset precompile, 3-stage |
+| [Nginx](nginx/Dockerfile) | ~25MB | nginx:alpine | Custom config, security headers |
 
-## How to Use
+## Production Best Practices Used
+
+All Dockerfiles follow these practices:
+
+- ✅ **Multi-stage builds** — Smallest possible final image
+- ✅ **Non-root user** — Never run as root in production
+- ✅ **Health checks** — Container self-monitoring
+- ✅ **Layer caching** — Dependencies before source code
+- ✅ **Specific tags** — No `:latest` in production
+- ✅ **Minimal base** — Alpine/slim/distroless where possible
+- ✅ **No secrets in image** — Use runtime env vars or secrets manager
+
+## Quick Usage
 
 ```bash
-# 1. Copy the Dockerfile to your project
-cp examples/nodejs/Dockerfile ./Dockerfile
+# Build any example
+cd examples/golang
+docker build -t myapp:prod .
 
-# 2. Customize for your app (change CMD, EXPOSE, etc.)
-
-# 3. Build
-docker build -t my-app:latest .
-
-# 4. Run
-docker run -d -p 3000:3000 my-app:latest
+# Run with production settings
+docker run -d -p 8080:8080 \
+  --name myapp \
+  --restart unless-stopped \
+  -m 512m --cpus="1.0" \
+  myapp:prod
 ```
-
-## Best Practices Used in All Examples
-
-- ✅ Multi-stage builds (smaller images)
-- ✅ Non-root user (security)
-- ✅ Layer caching (fast builds)
-- ✅ Health checks
-- ✅ Minimal base images (Alpine/Slim)
 
 ---
 
-*Created by [Krishna Yada](https://github.com/yadakrishna245)*
+*Created by [Krishna Yada](https://github.com/yadakrishna245) ⭐*
