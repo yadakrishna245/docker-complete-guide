@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 280" font-family="Arial, sans-serif">
+  <rect width="900" height="280" fill="#0d1117" rx="12"/>
+  <text x="450" y="30" text-anchor="middle" fill="#58a6ff" font-size="16" font-weight="bold">AWS ECR: Push → Store → Deploy</text>
+
+  <!-- Developer -->
+  <rect x="30" y="90" width="140" height="100" fill="#1f2937" stroke="#6366f1" stroke-width="2" rx="10">
+    <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" repeatCount="indefinite"/>
+  </rect>
+  <text x="100" y="125" text-anchor="middle" fill="#818cf8" font-size="24">👨‍💻</text>
+  <text x="100" y="150" text-anchor="middle" fill="#a5b4fc" font-size="12" font-weight="bold">Developer</text>
+  <text x="100" y="170" text-anchor="middle" fill="#6b7280" font-size="10">docker build + tag</text>
+
+  <!-- Arrow: Push -->
+  <line x1="170" y1="140" x2="290" y2="140" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="8,4">
+    <animate attributeName="stroke-dashoffset" values="24;0" dur="1s" repeatCount="indefinite"/>
+  </line>
+  <polygon points="290,135 300,140 290,145" fill="#f59e0b"/>
+  <text x="230" y="130" fill="#fcd34d" font-size="10" font-weight="bold">docker push</text>
+
+  <!-- ECR -->
+  <rect x="300" y="70" width="200" height="140" fill="#1f2937" stroke="#f59e0b" stroke-width="2.5" rx="10">
+    <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+  </rect>
+  <text x="400" y="105" text-anchor="middle" fill="#fbbf24" font-size="20">📦</text>
+  <text x="400" y="130" text-anchor="middle" fill="#fcd34d" font-size="13" font-weight="bold">AWS ECR</text>
+  <text x="400" y="150" text-anchor="middle" fill="#9ca3af" font-size="10">Private Registry</text>
+  <text x="400" y="170" text-anchor="middle" fill="#6b7280" font-size="9">Encrypted • Scanned • HA</text>
+  <text x="400" y="190" text-anchor="middle" fill="#6b7280" font-size="9">No rate limits</text>
+
+  <!-- Arrow: Pull to ECS -->
+  <line x1="500" y1="105" x2="600" y2="75" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6,3">
+    <animate attributeName="stroke-dashoffset" values="18;0" dur="0.8s" repeatCount="indefinite"/>
+  </line>
+  <polygon points="598,70 606,73 600,78" fill="#3b82f6"/>
+
+  <!-- Arrow: Pull to EKS -->
+  <line x1="500" y1="125" x2="600" y2="130" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6,3">
+    <animate attributeName="stroke-dashoffset" values="18;0" dur="0.8s" repeatCount="indefinite"/>
+  </line>
+  <polygon points="598,125 606,130 598,135" fill="#3b82f6"/>
+
+  <!-- Arrow: Pull to EC2 -->
+  <line x1="500" y1="155" x2="600" y2="185" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6,3">
+    <animate attributeName="stroke-dashoffset" values="18;0" dur="0.8s" repeatCount="indefinite"/>
+  </line>
+  <polygon points="598,188 606,185 600,180" fill="#3b82f6"/>
+
+  <!-- Arrow: Pull to Lambda -->
+  <line x1="500" y1="175" x2="600" y2="240" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6,3">
+    <animate attributeName="stroke-dashoffset" values="18;0" dur="0.8s" repeatCount="indefinite"/>
+  </line>
+  <polygon points="598,243 606,240 600,235" fill="#3b82f6"/>
+
+  <text x="560" y="55" fill="#60a5fa" font-size="9">docker pull</text>
+
+  <!-- ECS -->
+  <rect x="610" y="50" width="160" height="45" fill="#1f2937" stroke="#3b82f6" stroke-width="2" rx="8">
+    <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" begin="0.3s" repeatCount="indefinite"/>
+  </rect>
+  <text x="690" y="70" text-anchor="middle" fill="#60a5fa" font-size="11" font-weight="bold">🚀 AWS ECS</text>
+  <text x="690" y="86" text-anchor="middle" fill="#6b7280" font-size="9">Fargate / EC2</text>
+
+  <!-- EKS -->
+  <rect x="610" y="108" width="160" height="45" fill="#1f2937" stroke="#8b5cf6" stroke-width="2" rx="8">
+    <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" begin="0.6s" repeatCount="indefinite"/>
+  </rect>
+  <text x="690" y="128" text-anchor="middle" fill="#a78bfa" font-size="11" font-weight="bold">☸️ AWS EKS</text>
+  <text x="690" y="144" text-anchor="middle" fill="#6b7280" font-size="9">Kubernetes</text>
+
+  <!-- EC2 -->
+  <rect x="610" y="166" width="160" height="45" fill="#1f2937" stroke="#10b981" stroke-width="2" rx="8">
+    <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" begin="0.9s" repeatCount="indefinite"/>
+  </rect>
+  <text x="690" y="186" text-anchor="middle" fill="#34d399" font-size="11" font-weight="bold">🖥️ EC2 Instance</text>
+  <text x="690" y="202" text-anchor="middle" fill="#6b7280" font-size="9">Self-managed</text>
+
+  <!-- Lambda -->
+  <rect x="610" y="224" width="160" height="45" fill="#1f2937" stroke="#ec4899" stroke-width="2" rx="8">
+    <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" begin="1.2s" repeatCount="indefinite"/>
+  </rect>
+  <text x="690" y="244" text-anchor="middle" fill="#f472b6" font-size="11" font-weight="bold">⚡ AWS Lambda</text>
+  <text x="690" y="260" text-anchor="middle" fill="#6b7280" font-size="9">Container Image</text>
+
+  <!-- Animated dot -->
+  <circle r="4" fill="#f59e0b">
+    <animateMotion dur="3s" repeatCount="indefinite" path="M100,140 L400,140"/>
+    <animate attributeName="opacity" values="1;0.4;1" dur="1s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="3" fill="#3b82f6">
+    <animateMotion dur="2s" begin="1.5s" repeatCount="indefinite" path="M400,140 L690,75"/>
+  </circle>
+</svg>

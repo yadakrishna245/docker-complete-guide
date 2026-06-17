@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 280" font-family="Arial, sans-serif">
+  <rect width="900" height="280" fill="#0d1117" rx="12"/>
+  <text x="450" y="30" text-anchor="middle" fill="#58a6ff" font-size="16" font-weight="bold">Multi-Stage Build: Reduce Image Size by 83%</text>
+
+  <!-- Stage 1: Builder -->
+  <rect x="30" y="55" width="320" height="160" fill="#1f2937" stroke="#ef4444" stroke-width="2" rx="10">
+    <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" repeatCount="indefinite"/>
+  </rect>
+  <text x="190" y="80" text-anchor="middle" fill="#fca5a5" font-size="12" font-weight="bold">Stage 1: Builder (heavy)</text>
+
+  <rect x="50" y="95" width="130" height="50" fill="#374151" rx="6"/>
+  <text x="115" y="115" text-anchor="middle" fill="#d1d5db" font-size="11">🏗️ node:18</text>
+  <text x="115" y="133" text-anchor="middle" fill="#ef4444" font-size="10" font-weight="bold">~900MB</text>
+
+  <line x1="180" y1="120" x2="210" y2="120" stroke="#ef4444" stroke-width="1.5"/>
+  <polygon points="210,116 218,120 210,124" fill="#ef4444"/>
+
+  <rect x="220" y="95" width="115" height="50" fill="#374151" rx="6"/>
+  <text x="278" y="115" text-anchor="middle" fill="#d1d5db" font-size="10">Install deps</text>
+  <text x="278" y="133" text-anchor="middle" fill="#d1d5db" font-size="10">+ Build</text>
+
+  <text x="190" y="180" text-anchor="middle" fill="#6b7280" font-size="10">npm ci, npm run build</text>
+  <text x="190" y="200" text-anchor="middle" fill="#6b7280" font-size="10">Compilers, dev tools included</text>
+
+  <!-- Arrow: COPY --from=builder -->
+  <line x1="350" y1="135" x2="440" y2="135" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="8,4">
+    <animate attributeName="stroke-dashoffset" values="24;0" dur="1s" repeatCount="indefinite"/>
+  </line>
+  <polygon points="440,130 450,135 440,140" fill="#f59e0b"/>
+  <text x="395" y="120" fill="#fcd34d" font-size="9" text-anchor="middle">COPY</text>
+  <text x="395" y="155" fill="#fcd34d" font-size="9" text-anchor="middle">--from=builder</text>
+
+  <!-- Stage 2: Production -->
+  <rect x="450" y="55" width="280" height="160" fill="#1f2937" stroke="#10b981" stroke-width="2" rx="10">
+    <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+  </rect>
+  <text x="590" y="80" text-anchor="middle" fill="#6ee7b7" font-size="12" font-weight="bold">Stage 2: Production (light)</text>
+
+  <rect x="470" y="95" width="130" height="50" fill="#374151" rx="6"/>
+  <text x="535" y="115" text-anchor="middle" fill="#d1d5db" font-size="11">🏔️ node:18-alpine</text>
+  <text x="535" y="133" text-anchor="middle" fill="#10b981" font-size="10" font-weight="bold">~130MB</text>
+
+  <line x1="600" y1="120" x2="620" y2="120" stroke="#10b981" stroke-width="1.5"/>
+  <polygon points="620,116 628,120 620,124" fill="#10b981"/>
+
+  <rect x="630" y="95" width="85" height="50" fill="#374151" rx="6"/>
+  <text x="672" y="115" text-anchor="middle" fill="#d1d5db" font-size="10">Copy only</text>
+  <text x="672" y="133" text-anchor="middle" fill="#d1d5db" font-size="10">built output</text>
+
+  <text x="590" y="180" text-anchor="middle" fill="#6b7280" font-size="10">Only dist/ + node_modules</text>
+  <text x="590" y="200" text-anchor="middle" fill="#6b7280" font-size="10">No dev tools, no source</text>
+
+  <!-- Final Output -->
+  <rect x="760" y="85" width="120" height="80" fill="#1f2937" stroke="#10b981" stroke-width="2.5" rx="10">
+    <animate attributeName="stroke-opacity" values="0.6;1;0.6" dur="1.5s" repeatCount="indefinite"/>
+  </rect>
+  <text x="820" y="115" text-anchor="middle" fill="#34d399" font-size="20">✅</text>
+  <text x="820" y="137" text-anchor="middle" fill="#6ee7b7" font-size="11" font-weight="bold">Final Image</text>
+  <text x="820" y="155" text-anchor="middle" fill="#10b981" font-size="13" font-weight="bold">~150MB</text>
+
+  <!-- Arrow to final -->
+  <line x1="730" y1="125" x2="758" y2="125" stroke="#10b981" stroke-width="2" stroke-dasharray="5,3">
+    <animate attributeName="stroke-dashoffset" values="16;0" dur="0.7s" repeatCount="indefinite"/>
+  </line>
+  <polygon points="755,121 763,125 755,129" fill="#10b981"/>
+
+  <!-- Bottom comparison -->
+  <text x="190" y="250" text-anchor="middle" fill="#ef4444" font-size="11">❌ ~900MB with build tools</text>
+  <text x="590" y="250" text-anchor="middle" fill="#10b981" font-size="11">✅ ~150MB production-ready</text>
+  <text x="450" y="270" text-anchor="middle" fill="#4b5563" font-size="10">Multi-stage builds copy only what's needed → smaller, more secure images</text>
+
+  <!-- Animated dot -->
+  <circle r="4" fill="#f59e0b">
+    <animateMotion dur="3s" repeatCount="indefinite" path="M190,135 L395,135 L590,135 L820,135"/>
+    <animate attributeName="opacity" values="1;0.4;1" dur="1s" repeatCount="indefinite"/>
+  </circle>
+</svg>

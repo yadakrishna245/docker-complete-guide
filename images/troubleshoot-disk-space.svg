@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 320" font-family="Arial, sans-serif">
+  <rect width="900" height="320" fill="#0d1117" rx="12"/>
+  <text x="450" y="30" text-anchor="middle" fill="#58a6ff" font-size="16" font-weight="bold">🧹 Troubleshooting: Docker Disk Space Full</text>
+
+  <!-- Problem -->
+  <rect x="350" y="45" width="200" height="35" fill="#1f2937" stroke="#ef4444" stroke-width="2" rx="8">
+    <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+  </rect>
+  <text x="450" y="67" text-anchor="middle" fill="#fca5a5" font-size="11" font-weight="bold">Disk space full</text>
+
+  <!-- docker system df -->
+  <line x1="450" y1="80" x2="450" y2="100" stroke="#ef4444" stroke-width="2" stroke-dasharray="4,2">
+    <animate attributeName="stroke-dashoffset" values="12;0" dur="0.6s" repeatCount="indefinite"/>
+  </line>
+  <rect x="350" y="100" width="200" height="30" fill="#1f2937" stroke="#3b82f6" stroke-width="2" rx="6"/>
+  <text x="450" y="119" text-anchor="middle" fill="#60a5fa" font-size="10" font-weight="bold">docker system df</text>
+
+  <!-- Four branches -->
+  <line x1="380" y1="130" x2="130" y2="155" stroke="#6b7280" stroke-width="1.5" stroke-dasharray="4,2">
+    <animate attributeName="stroke-dashoffset" values="12;0" dur="0.6s" repeatCount="indefinite"/>
+  </line>
+  <line x1="420" y1="130" x2="330" y2="155" stroke="#6b7280" stroke-width="1.5" stroke-dasharray="4,2">
+    <animate attributeName="stroke-dashoffset" values="12;0" dur="0.6s" repeatCount="indefinite"/>
+  </line>
+  <line x1="480" y1="130" x2="560" y2="155" stroke="#6b7280" stroke-width="1.5" stroke-dasharray="4,2">
+    <animate attributeName="stroke-dashoffset" values="12;0" dur="0.6s" repeatCount="indefinite"/>
+  </line>
+  <line x1="520" y1="130" x2="770" y2="155" stroke="#6b7280" stroke-width="1.5" stroke-dasharray="4,2">
+    <animate attributeName="stroke-dashoffset" values="12;0" dur="0.6s" repeatCount="indefinite"/>
+  </line>
+
+  <!-- Images -->
+  <rect x="30" y="155" width="200" height="55" fill="#1f2937" stroke="#3b82f6" stroke-width="2" rx="8">
+    <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" repeatCount="indefinite"/>
+  </rect>
+  <text x="130" y="178" text-anchor="middle" fill="#60a5fa" font-size="11" font-weight="bold">📦 Images</text>
+  <text x="130" y="198" text-anchor="middle" fill="#6ee7b7" font-size="9">docker image prune -a</text>
+
+  <!-- Containers -->
+  <rect x="250" y="155" width="200" height="55" fill="#1f2937" stroke="#10b981" stroke-width="2" rx="8">
+    <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" begin="0.3s" repeatCount="indefinite"/>
+  </rect>
+  <text x="350" y="178" text-anchor="middle" fill="#34d399" font-size="11" font-weight="bold">🐳 Containers</text>
+  <text x="350" y="198" text-anchor="middle" fill="#6ee7b7" font-size="9">docker container prune</text>
+
+  <!-- Volumes -->
+  <rect x="470" y="155" width="200" height="55" fill="#1f2937" stroke="#f59e0b" stroke-width="2" rx="8">
+    <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" begin="0.6s" repeatCount="indefinite"/>
+  </rect>
+  <text x="570" y="178" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="bold">💾 Volumes</text>
+  <text x="570" y="198" text-anchor="middle" fill="#fcd34d" font-size="9">⚠️ docker volume prune</text>
+
+  <!-- Build Cache -->
+  <rect x="690" y="155" width="190" height="55" fill="#1f2937" stroke="#8b5cf6" stroke-width="2" rx="8">
+    <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" begin="0.9s" repeatCount="indefinite"/>
+  </rect>
+  <text x="785" y="178" text-anchor="middle" fill="#a78bfa" font-size="11" font-weight="bold">🔨 Build Cache</text>
+  <text x="785" y="198" text-anchor="middle" fill="#6ee7b7" font-size="9">docker builder prune</text>
+
+  <!-- Still full? -->
+  <line x1="130" y1="210" x2="450" y2="240" stroke="#6b7280" stroke-width="1"/>
+  <line x1="350" y1="210" x2="450" y2="240" stroke="#6b7280" stroke-width="1"/>
+  <line x1="570" y1="210" x2="450" y2="240" stroke="#6b7280" stroke-width="1"/>
+  <line x1="785" y1="210" x2="450" y2="240" stroke="#6b7280" stroke-width="1"/>
+
+  <rect x="380" y="235" width="140" height="28" fill="#374151" rx="5"/>
+  <text x="450" y="253" text-anchor="middle" fill="#d1d5db" font-size="9">Still full?</text>
+
+  <!-- Nuclear option -->
+  <line x1="450" y1="263" x2="450" y2="278" stroke="#ef4444" stroke-width="2"/>
+  <rect x="270" y="278" width="360" height="35" fill="#1f2937" stroke="#ef4444" stroke-width="2.5" rx="8">
+    <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="1s" repeatCount="indefinite"/>
+  </rect>
+  <text x="450" y="300" text-anchor="middle" fill="#fca5a5" font-size="10" font-weight="bold">⚠️ Nuclear: docker system prune -a --volumes</text>
+
+  <text x="130" y="300" text-anchor="middle" fill="#10b981" font-size="10">✅ Space recovered!</text>
+</svg>

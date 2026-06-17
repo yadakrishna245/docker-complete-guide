@@ -311,21 +311,9 @@ docker run hello-world
 
 Images are read-only templates used to create containers.
 
-```mermaid
-graph TB
-    subgraph Registry["Docker Registry (Docker Hub)"]
-        I1[nginx:latest]
-        I2[postgres:15]
-        I3[node:18]
-    end
-    subgraph Host["Docker Host"]
-        I1 -->|docker pull| L1[Local Image: nginx]
-        I2 -->|docker pull| L2[Local Image: postgres]
-        L1 -->|docker run| C1[Container 1]
-        L1 -->|docker run| C2[Container 2]
-        L2 -->|docker run| C3[Container 3]
-    end
-```
+<p align="center">
+  <img src="images/docker-images-flow.svg" alt="Docker Images Flow: Registry to Host to Containers" width="100%"/>
+</p>
 
 ### Image Layers
 
@@ -437,19 +425,9 @@ Containers are running instances of images.
 
 ### Container Lifecycle
 
-```mermaid
-stateDiagram-v2
-    [*] --> Created: docker create
-    Created --> Running: docker start
-    Running --> Paused: docker pause
-    Paused --> Running: docker unpause
-    Running --> Stopped: docker stop
-    Stopped --> Running: docker start
-    Running --> Removed: docker rm -f
-    Stopped --> Removed: docker rm
-    Created --> Removed: docker rm
-    Removed --> [*]
-```
+<p align="center">
+  <img src="images/container-lifecycle.svg" alt="Docker Container Lifecycle States" width="100%"/>
+</p>
 
 ### List Containers
 ```bash
@@ -557,12 +535,9 @@ docker run -it ubuntu:latest /bin/bash
 
 ### Port Mapping (-p)
 
-```mermaid
-graph LR
-    User[👤 User<br/>localhost:8080] -->|Request| HP[Host Port<br/>8080]
-    HP -->|Maps to| CP[Container Port<br/>80]
-    CP --> App[🌐 Nginx<br/>inside container]
-```
+<p align="center">
+  <img src="images/port-mapping.svg" alt="Docker Port Mapping: Host to Container" width="100%"/>
+</p>
 
 ```bash
 # Map host:container port
@@ -713,13 +688,9 @@ docker run -d -p 6379:6379 --name redis redis:7-alpine
 
 A Dockerfile is a text file with instructions to build a Docker image.
 
-```mermaid
-graph LR
-    A[Dockerfile] -->|docker build| B[Image]
-    B -->|docker run| C[Container]
-    C -->|docker commit| D[New Image]
-    B -->|docker push| E[Registry]
-```
+<p align="center">
+  <img src="images/dockerfile-workflow.svg" alt="Dockerfile to Image to Container Workflow" width="100%"/>
+</p>
 
 ### All Dockerfile Instructions
 
@@ -768,17 +739,9 @@ CMD ["node", "index.js"]
 
 ### Multi-Stage Build (Reduces Image Size)
 
-```mermaid
-graph LR
-    subgraph Stage1["Stage 1: Builder (heavy)"]
-        S1[node:18 full image<br/>~900MB] --> B1[Install deps + Build]
-    end
-    subgraph Stage2["Stage 2: Production (light)"]
-        S2[node:18-alpine<br/>~130MB] --> B2[Copy only built output]
-    end
-    B1 -->|COPY --from=builder| B2
-    B2 --> Final[Final Image<br/>~150MB ✅]
-```
+<p align="center">
+  <img src="images/multi-stage-build.svg" alt="Docker Multi-Stage Build: Reducing Image Size" width="100%"/>
+</p>
 ```dockerfile
 # Stage 1: Build
 FROM node:18 AS builder
@@ -875,25 +838,9 @@ FROM gcr.io/distroless/nodejs18-debian12
 
 Docker Compose manages multi-container applications with a single YAML file.
 
-```mermaid
-graph TB
-    subgraph DockerCompose["docker-compose.yml"]
-        direction TB
-        DC[Docker Compose]
-    end
-    subgraph Services["Services"]
-        DC --> W[🌐 web<br/>nginx:latest<br/>Port 8080]
-        DC --> A[⚙️ api<br/>node:18<br/>Port 3000]
-        DC --> D[🗄️ db<br/>postgres:15<br/>Port 5432]
-        DC --> R[📦 redis<br/>redis:7<br/>Port 6379]
-    end
-    subgraph Storage["Volumes"]
-        D --> V1[(postgres_data)]
-    end
-    W -->|depends_on| A
-    A -->|depends_on| D
-    A -->|depends_on| R
-```
+<p align="center">
+  <img src="images/docker-compose-services.svg" alt="Docker Compose Multi-Service Architecture" width="100%"/>
+</p>
 
 ### Basic docker-compose.yml
 ```yaml
@@ -1060,24 +1007,9 @@ services:
 
 Docker networking allows containers to communicate with each other and the outside world.
 
-```mermaid
-graph TB
-    Internet[🌍 Internet]
-    subgraph Host["Docker Host"]
-        subgraph Bridge["bridge network (default)"]
-            C1[Container 1<br/>172.17.0.2]
-            C2[Container 2<br/>172.17.0.3]
-        end
-        subgraph Custom["custom network (user-defined)"]
-            C3[Container 3<br/>app]
-            C4[Container 4<br/>db]
-        end
-        HostNet[Host Network<br/>No isolation]
-    end
-    Internet <-->|Port mapping| Bridge
-    C3 <-->|DNS by name| C4
-    C1 -.-|No DNS resolution| C2
-```
+<p align="center">
+  <img src="images/docker-networking.svg" alt="Docker Networking: Bridge, Custom, and Host Networks" width="100%"/>
+</p>
 
 > ⚠️ **Tip:** Use custom networks over the default bridge — they provide automatic DNS resolution between containers by name.
 
@@ -1154,21 +1086,9 @@ docker run -d --name api --network app-network \
 
 Volumes persist data beyond the container lifecycle. Without them, data is lost when the container is removed.
 
-```mermaid
-graph LR
-    subgraph Container["Container"]
-        App[Application]
-        FS[Container Filesystem<br/>❌ Lost on rm]
-    end
-    subgraph Persistence["Persistent Storage"]
-        V1[(Named Volume<br/>Docker managed<br/>✅ Survives rm)]
-        V2[/Bind Mount<br/>Host directory<br/>✅ Survives rm/]
-        V3[tmpfs<br/>Memory only<br/>❌ Lost on stop]
-    end
-    App --> V1
-    App --> V2
-    App --> V3
-```
+<p align="center">
+  <img src="images/docker-volumes.svg" alt="Docker Volumes: Persistent Storage Options" width="100%"/>
+</p>
 
 ### Volume Types
 
@@ -1433,14 +1353,9 @@ gcloud auth configure-docker
 
 AWS ECR is a fully managed Docker container registry that makes it easy to store, manage, and deploy Docker container images.
 
-```mermaid
-graph LR
-    Dev[👨‍💻 Developer] -->|docker push| ECR[AWS ECR<br/>Private Registry]
-    ECR -->|docker pull| ECS[AWS ECS<br/>Fargate / EC2]
-    ECR -->|docker pull| EKS[AWS EKS<br/>Kubernetes]
-    ECR -->|docker pull| EC2[EC2 Instance]
-    ECR -->|docker pull| Lambda[AWS Lambda<br/>Container Image]
-```
+<p align="center">
+  <img src="images/aws-ecr-flow.svg" alt="AWS ECR: Developer Push to Deploy Services" width="100%"/>
+</p>
 
 ### Why Use ECR?
 
@@ -1669,18 +1584,9 @@ aws ecr put-replication-configuration \
 
 ### ECR Complete Workflow Summary
 
-```mermaid
-graph TD
-    A[1. Create ECR Repo] --> B[2. Authenticate Docker]
-    B --> C[3. Build Image Locally]
-    C --> D[4. Tag for ECR]
-    D --> E[5. Push to ECR]
-    E --> F[6. Deploy to AWS Services]
-    F --> G[ECS / EKS / Lambda / EC2]
-    E --> H[7. Set Lifecycle Policy]
-    E --> I[8. Enable Scanning]
-    E --> J[9. Cross-Region Replication]
-```
+<p align="center">
+  <img src="images/ecr-workflow.svg" alt="ECR Complete Workflow: Create, Build, Push, Deploy" width="100%"/>
+</p>
 
 ### Quick ECR Commands Cheat Sheet
 

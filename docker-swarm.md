@@ -8,23 +8,9 @@
 
 Docker Swarm turns a group of Docker hosts into a single virtual Docker host. It provides native clustering, load balancing, and service discovery.
 
-```mermaid
-graph TB
-    subgraph Swarm["Docker Swarm Cluster"]
-        M1[Manager Node 1<br/>Leader] 
-        M2[Manager Node 2]
-        M3[Manager Node 3]
-        W1[Worker Node 1]
-        W2[Worker Node 2]
-        W3[Worker Node 3]
-    end
-    M1 <--> M2
-    M1 <--> M3
-    M2 <--> M3
-    M1 --> W1
-    M1 --> W2
-    M1 --> W3
-```
+<p align="center">
+  <img src="images/docker-swarm-cluster.svg" alt="Docker Swarm Cluster: Manager and Worker Nodes" width="100%"/>
+</p>
 
 ### Swarm vs Kubernetes
 
