@@ -1,106 +1,65 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 350" font-family="Arial, sans-serif">
-  <rect width="900" height="350" fill="#0d1117" rx="12"/>
-  <text x="450" y="30" text-anchor="middle" fill="#58a6ff" font-size="16" font-weight="bold">🐝 Docker Swarm Cluster</text>
-
-  <!-- Manager Nodes -->
-  <text x="450" y="60" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="bold">Manager Nodes (Raft Consensus)</text>
-
-  <!-- Manager 1 (Leader) -->
-  <rect x="320" y="70" width="160" height="65" fill="#1f2937" stroke="#f59e0b" stroke-width="2.5" rx="10">
-    <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
-  </rect>
-  <text x="400" y="95" text-anchor="middle" fill="#fbbf24" font-size="14">👑</text>
-  <text x="400" y="113" text-anchor="middle" fill="#fcd34d" font-size="11" font-weight="bold">Manager 1</text>
-  <text x="400" y="128" text-anchor="middle" fill="#f59e0b" font-size="9" font-weight="bold">LEADER</text>
-
-  <!-- Manager 2 -->
-  <rect x="100" y="70" width="160" height="65" fill="#1f2937" stroke="#f59e0b" stroke-width="2" rx="10">
-    <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" begin="0.5s" repeatCount="indefinite"/>
-  </rect>
-  <text x="180" y="100" text-anchor="middle" fill="#fcd34d" font-size="11" font-weight="bold">Manager 2</text>
-  <text x="180" y="118" text-anchor="middle" fill="#6b7280" font-size="9">Standby</text>
-
-  <!-- Manager 3 -->
-  <rect x="540" y="70" width="160" height="65" fill="#1f2937" stroke="#f59e0b" stroke-width="2" rx="10">
-    <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" begin="1s" repeatCount="indefinite"/>
-  </rect>
-  <text x="620" y="100" text-anchor="middle" fill="#fcd34d" font-size="11" font-weight="bold">Manager 3</text>
-  <text x="620" y="118" text-anchor="middle" fill="#6b7280" font-size="9">Standby</text>
-
-  <!-- Manager interconnection lines (bidirectional) -->
-  <line x1="260" y1="100" x2="320" y2="100" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4,3">
-    <animate attributeName="stroke-dashoffset" values="14;0" dur="1s" repeatCount="indefinite"/>
-  </line>
-  <line x1="480" y1="100" x2="540" y2="100" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4,3">
-    <animate attributeName="stroke-dashoffset" values="14;0" dur="1s" repeatCount="indefinite"/>
-  </line>
-  <line x1="220" y1="135" x2="580" y2="135" stroke="#f59e0b" stroke-width="1" stroke-dasharray="3,4">
-    <animate attributeName="stroke-dashoffset" values="14;0" dur="1.5s" repeatCount="indefinite"/>
-  </line>
-
-  <!-- Worker Nodes label -->
-  <text x="450" y="175" text-anchor="middle" fill="#60a5fa" font-size="11" font-weight="bold">Worker Nodes (Run Tasks)</text>
-
-  <!-- Lines from Leader to Workers -->
-  <line x1="400" y1="135" x2="180" y2="195" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6,3">
-    <animate attributeName="stroke-dashoffset" values="18;0" dur="0.8s" repeatCount="indefinite"/>
-  </line>
-  <polygon points="183,190 175,197 185,198" fill="#3b82f6"/>
-
-  <line x1="400" y1="135" x2="400" y2="195" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6,3">
-    <animate attributeName="stroke-dashoffset" values="18;0" dur="0.8s" repeatCount="indefinite"/>
-  </line>
-  <polygon points="395,195 400,203 405,195" fill="#3b82f6"/>
-
-  <line x1="400" y1="135" x2="620" y2="195" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6,3">
-    <animate attributeName="stroke-dashoffset" values="18;0" dur="0.8s" repeatCount="indefinite"/>
-  </line>
-  <polygon points="617,190 625,197 615,198" fill="#3b82f6"/>
-
-  <!-- Worker 1 -->
-  <rect x="100" y="200" width="160" height="65" fill="#1f2937" stroke="#3b82f6" stroke-width="2" rx="10">
-    <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" begin="0.3s" repeatCount="indefinite"/>
-  </rect>
-  <text x="180" y="225" text-anchor="middle" fill="#60a5fa" font-size="18">🐳</text>
-  <text x="180" y="248" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="bold">Worker 1</text>
-
-  <!-- Worker 2 -->
-  <rect x="320" y="200" width="160" height="65" fill="#1f2937" stroke="#3b82f6" stroke-width="2" rx="10">
-    <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" begin="0.6s" repeatCount="indefinite"/>
-  </rect>
-  <text x="400" y="225" text-anchor="middle" fill="#60a5fa" font-size="18">🐳</text>
-  <text x="400" y="248" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="bold">Worker 2</text>
-
-  <!-- Worker 3 -->
-  <rect x="540" y="200" width="160" height="65" fill="#1f2937" stroke="#3b82f6" stroke-width="2" rx="10">
-    <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" begin="0.9s" repeatCount="indefinite"/>
-  </rect>
-  <text x="620" y="225" text-anchor="middle" fill="#60a5fa" font-size="18">🐳</text>
-  <text x="620" y="248" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="bold">Worker 3</text>
-
-  <!-- Features -->
-  <rect x="150" y="285" width="140" height="30" fill="#374151" rx="6"/>
-  <text x="220" y="304" text-anchor="middle" fill="#6ee7b7" font-size="9">🔄 Load Balancing</text>
-  <rect x="310" y="285" width="140" height="30" fill="#374151" rx="6"/>
-  <text x="380" y="304" text-anchor="middle" fill="#fcd34d" font-size="9">🔁 Rolling Updates</text>
-  <rect x="470" y="285" width="140" height="30" fill="#374151" rx="6"/>
-  <text x="540" y="304" text-anchor="middle" fill="#f9a8d4" font-size="9">💊 Self-Healing</text>
-  <rect x="630" y="285" width="140" height="30" fill="#374151" rx="6"/>
-  <text x="700" y="304" text-anchor="middle" fill="#93c5fd" font-size="9">🔐 Secrets Mgmt</text>
-
-  <!-- Animated dots flowing from leader to workers -->
-  <circle r="3" fill="#3b82f6">
-    <animateMotion dur="2s" repeatCount="indefinite" path="M400,135 L180,200"/>
-    <animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite"/>
-  </circle>
-  <circle r="3" fill="#3b82f6">
-    <animateMotion dur="2s" begin="0.7s" repeatCount="indefinite" path="M400,135 L400,200"/>
-    <animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite"/>
-  </circle>
-  <circle r="3" fill="#3b82f6">
-    <animateMotion dur="2s" begin="1.4s" repeatCount="indefinite" path="M400,135 L620,200"/>
-    <animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite"/>
-  </circle>
-
-  <text x="450" y="340" text-anchor="middle" fill="#4b5563" font-size="10">docker swarm init | docker service create --replicas 3 | Built-in orchestration</text>
+<svg fill="none" viewBox="0 0 900 330" width="900" height="330" xmlns="http://www.w3.org/2000/svg">
+  <foreignObject width="100%" height="100%">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        @keyframes pulseGold { 0%,100%{border-color:#eab308} 50%{border-color:#ca8a04} }
+        @keyframes pulseBlue { 0%,100%{border-color:#3b82f6} 50%{border-color:#1d4ed8} }
+        .wrap{background:#0d1117;font-family:Arial,sans-serif;color:#e5e7eb;padding:12px;box-sizing:border-box;width:900px;height:330px;display:flex;flex-direction:column;gap:10px}
+        .title{text-align:center;font-size:14px;font-weight:bold;color:#eab308}
+        .row{display:flex;gap:14px;justify-content:center}
+        .manager{background:#1f2937;border:2px solid #eab308;animation:pulseGold 3s infinite;border-radius:10px;padding:12px 20px;text-align:center;min-width:160px}
+        .worker{background:#1f2937;border:2px solid #3b82f6;animation:pulseBlue 3s infinite;border-radius:10px;padding:12px 20px;text-align:center;min-width:160px}
+        .node-title{font-size:12px;font-weight:bold;margin-bottom:4px}
+        .leader-badge{color:#eab308;font-size:11px}
+        .connections{text-align:center;font-size:11px;color:#9ca3af}
+        .dash{border-top:2px dashed #6b7280;margin:0 auto;width:60%}
+        .arrows-down{text-align:center;font-size:14px;color:#eab308}
+        .features{display:flex;gap:10px;justify-content:center;margin-top:auto}
+        .feature{background:#374151;border-radius:6px;padding:8px 14px;font-size:11px;text-align:center}
+        .whale{font-size:18px}
+      </style>
+      <div class="wrap">
+        <div class="title">🐳 Docker Swarm Cluster</div>
+        <div class="row">
+          <div class="manager">
+            <div class="node-title">👑 Manager 1</div>
+            <div class="leader-badge">⭐ LEADER</div>
+          </div>
+          <div class="manager">
+            <div class="node-title">🔧 Manager 2</div>
+            <div style="font-size:10px;color:#9ca3af">Reachable</div>
+          </div>
+          <div class="manager">
+            <div class="node-title">🔧 Manager 3</div>
+            <div style="font-size:10px;color:#9ca3af">Reachable</div>
+          </div>
+        </div>
+        <div class="connections">
+          <div class="dash"></div>
+          - - - Raft Consensus - - -
+        </div>
+        <div class="arrows-down">↓ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓</div>
+        <div class="row">
+          <div class="worker">
+            <div class="whale">🐋</div>
+            <div class="node-title">Worker 1</div>
+          </div>
+          <div class="worker">
+            <div class="whale">🐋</div>
+            <div class="node-title">Worker 2</div>
+          </div>
+          <div class="worker">
+            <div class="whale">🐋</div>
+            <div class="node-title">Worker 3</div>
+          </div>
+        </div>
+        <div class="features">
+          <div class="feature">⚖️ Load Balancing</div>
+          <div class="feature">🔄 Rolling Updates</div>
+          <div class="feature">💚 Self-Healing</div>
+          <div class="feature">🔐 Secrets</div>
+        </div>
+      </div>
+    </div>
+  </foreignObject>
 </svg>

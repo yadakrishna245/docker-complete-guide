@@ -15,8 +15,12 @@
 [![GitHub stars](https://img.shields.io/github/stars/yadakrishna245/docker-complete-guide?style=for-the-badge)](https://github.com/yadakrishna245/docker-complete-guide/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/yadakrishna245/docker-complete-guide?style=for-the-badge)](https://github.com/yadakrishna245/docker-complete-guide/network)
 [![GitHub last commit](https://img.shields.io/github/last-commit/yadakrishna245/docker-complete-guide?style=for-the-badge)](https://github.com/yadakrishna245/docker-complete-guide/commits/main)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](CONTRIBUTING.md)
+![Visitors](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fyadakrishna245%2Fdocker-complete-guide&label=VISITORS&countColor=%232ccce4&style=for-the-badge)
 
 ---
+
+[? Back to top](#-docker-complete-guide)
 
 ### 📂 Repo Structure
 
@@ -24,10 +28,13 @@
 docker-complete-guide/
 ├── README.md                          # Complete Docker guide (you are here)
 ├── cheatsheet.md                      # Printable quick reference
-├── interview-questions.md             # Docker interview Q&A (33 questions)
+├── interview-questions.md             # Docker interview Q&A (55+ questions)
 ├── docker-security.md                 # Security best practices & tools
 ├── docker-troubleshooting-flowchart.md # Visual troubleshooting decision trees
 ├── docker-swarm.md                    # Docker Swarm orchestration guide
+├── docker-monitoring.md               # Monitoring with Prometheus & Grafana
+├── docker-vs-kubernetes.md            # Docker vs Kubernetes comparison
+├── CHANGELOG.md                       # Version history
 ├── examples/                          # Ready-to-use Dockerfiles
 │   ├── nodejs/Dockerfile
 │   ├── python/Dockerfile
@@ -45,6 +52,8 @@ docker-complete-guide/
 ```
 
 ---
+
+[? Back to top](#-docker-complete-guide)
 
 ## 📑 Table of Contents
 
@@ -69,6 +78,8 @@ docker-complete-guide/
 
 ---
 
+[? Back to top](#-docker-complete-guide)
+
 ## 🐳 What is Docker?
 
 Docker is a platform that packages applications into **containers** — lightweight, standalone, executable units that include everything needed to run: code, runtime, libraries, and dependencies.
@@ -85,6 +96,8 @@ Docker is a platform that packages applications into **containers** — lightwei
 | **Network** | Communication channel between containers |
 
 ---
+
+[? Back to top](#-docker-complete-guide)
 
 ## ⚙️ How Docker Works
 
@@ -119,6 +132,8 @@ Docker uses a **client-server architecture**:
 
 ---
 
+[? Back to top](#-docker-complete-guide)
+
 ## 💡 Why Use Docker?
 
 - **Consistency** — "Works on my machine" problem solved
@@ -131,6 +146,8 @@ Docker uses a **client-server architecture**:
 - **Version Control** — Tag and rollback images easily
 
 ---
+
+[? Back to top](#-docker-complete-guide)
 
 ## 📥 Installation
 
@@ -306,6 +323,8 @@ docker run hello-world
 
 ---
 
+[? Back to top](#-docker-complete-guide)
+
 
 ## 🖼️ Docker Images
 
@@ -418,6 +437,8 @@ docker load -i myapp.tar
 
 ---
 
+[? Back to top](#-docker-complete-guide)
+
 
 ## 📦 Docker Containers
 
@@ -509,6 +530,8 @@ docker rename old_name new_name
 ```
 
 ---
+
+[? Back to top](#-docker-complete-guide)
 
 
 ## 🚀 Docker Run (Complete Guide)
@@ -683,6 +706,8 @@ docker run -d -p 6379:6379 --name redis redis:7-alpine
 
 ---
 
+[? Back to top](#-docker-complete-guide)
+
 
 ## 📝 Dockerfile
 
@@ -832,6 +857,8 @@ FROM gcr.io/distroless/nodejs18-debian12
 ```
 
 ---
+
+[? Back to top](#-docker-complete-guide)
 
 
 ## 🎼 Docker Compose
@@ -1002,6 +1029,8 @@ services:
 
 ---
 
+[? Back to top](#-docker-complete-guide)
+
 
 ## 🌐 Docker Networking
 
@@ -1080,6 +1109,8 @@ docker run -d --name api --network app-network \
 ```
 
 ---
+
+[? Back to top](#-docker-complete-guide)
 
 
 ## 💾 Docker Volumes
@@ -1162,6 +1193,8 @@ docker run --rm -v shared-data:/data alpine cat /data/log.txt
 ```
 
 ---
+
+[? Back to top](#-docker-complete-guide)
 
 
 ## 🔍 Logs & Debugging
@@ -1259,6 +1292,8 @@ docker info
 
 ---
 
+[? Back to top](#-docker-complete-guide)
+
 ## 📊 Resource Management
 
 ### Memory
@@ -1311,6 +1346,8 @@ docker system prune -a --volumes
 
 ---
 
+[? Back to top](#-docker-complete-guide)
+
 
 ## 🏪 Docker Hub & Registries
 
@@ -1346,6 +1383,8 @@ gcloud auth configure-docker
 ```
 
 ---
+
+[? Back to top](#-docker-complete-guide)
 
 ## 🏗️ AWS ECR (Elastic Container Registry) — Complete Guide
 
@@ -1617,6 +1656,8 @@ docker tag myapp:latest myapp:production
 
 ---
 
+[? Back to top](#-docker-complete-guide)
+
 ## 🔄 Real-World Workflows
 
 <p align="center">
@@ -1720,6 +1761,8 @@ volumes:
 
 ---
 
+[? Back to top](#-docker-complete-guide)
+
 ## 🛠️ Troubleshooting
 
 ### Container Won't Start
@@ -1816,6 +1859,8 @@ docker build --check .
 
 ---
 
+[? Back to top](#-docker-complete-guide)
+
 ## 📋 Quick Reference
 
 ### Most Used Commands
@@ -1869,6 +1914,8 @@ docker build --check .
 
 ---
 
+[? Back to top](#-docker-complete-guide)
+
 ## 📚 Additional Resources
 
 - [Official Docker Documentation](https://docs.docker.com/)
@@ -1879,6 +1926,8 @@ docker build --check .
 
 ---
 
+[? Back to top](#-docker-complete-guide)
+
 ## 🤝 Contributing
 
 Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
@@ -1888,6 +1937,8 @@ Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
+
+[? Back to top](#-docker-complete-guide)
 
 ## ⭐ Support This Project
 
@@ -1903,6 +1954,8 @@ If this guide helped you, please **give it a star** ⭐ — it helps others find
 | LinkedIn | [Krishna Yada](https://www.linkedin.com/in/krishna-yada-8a8441239/) |
 
 ---
+
+[? Back to top](#-docker-complete-guide)
 
 <p align="center">
   Made with ❤️ by <strong>Krishna Yada</strong><br/>

@@ -1,81 +1,59 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" font-family="Arial, sans-serif">
-  <rect width="900" height="400" fill="#0d1117" rx="12"/>
-  <text x="450" y="30" text-anchor="middle" fill="#58a6ff" font-size="16" font-weight="bold">Docker Networking: How Containers Communicate</text>
-
-  <!-- Internet -->
-  <rect x="380" y="45" width="140" height="40" fill="#1f2937" stroke="#06b6d4" stroke-width="2" rx="20">
-    <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
-  </rect>
-  <text x="450" y="70" text-anchor="middle" fill="#22d3ee" font-size="12" font-weight="bold">🌍 Internet</text>
-
-  <!-- Arrow: Internet to Bridge -->
-  <line x1="450" y1="85" x2="450" y2="115" stroke="#06b6d4" stroke-width="2" stroke-dasharray="5,3">
-    <animate attributeName="stroke-dashoffset" values="16;0" dur="0.8s" repeatCount="indefinite"/>
-  </line>
-  <polygon points="445,115 450,123 455,115" fill="#06b6d4"/>
-  <text x="500" y="105" fill="#9ca3af" font-size="9">Port mapping</text>
-
-  <!-- Docker Host -->
-  <rect x="30" y="120" width="840" height="240" fill="#161b22" stroke="#30363d" stroke-width="1.5" rx="10"/>
-  <text x="450" y="140" text-anchor="middle" fill="#8b949e" font-size="11" font-weight="bold">🖥️ Docker Host</text>
-
-  <!-- Bridge Network -->
-  <rect x="450" y="150" width="390" height="120" fill="#1f2937" stroke="#3b82f6" stroke-width="2" rx="10">
-    <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" repeatCount="indefinite"/>
-  </rect>
-  <text x="645" y="170" text-anchor="middle" fill="#60a5fa" font-size="11" font-weight="bold">bridge network (default)</text>
-
-  <rect x="475" y="185" width="130" height="55" fill="#374151" stroke="#3b82f6" stroke-width="1" rx="6"/>
-  <text x="540" y="207" text-anchor="middle" fill="#d1d5db" font-size="10">Container 1</text>
-  <text x="540" y="225" text-anchor="middle" fill="#6b7280" font-size="9">172.17.0.2</text>
-
-  <rect x="680" y="185" width="130" height="55" fill="#374151" stroke="#3b82f6" stroke-width="1" rx="6"/>
-  <text x="745" y="207" text-anchor="middle" fill="#d1d5db" font-size="10">Container 2</text>
-  <text x="745" y="225" text-anchor="middle" fill="#6b7280" font-size="9">172.17.0.3</text>
-
-  <!-- Dashed line: No DNS -->
-  <line x1="605" y1="212" x2="680" y2="212" stroke="#6b7280" stroke-width="1.5" stroke-dasharray="4,4"/>
-  <text x="643" y="252" text-anchor="middle" fill="#ef4444" font-size="9">❌ No DNS resolution</text>
-
-  <!-- Custom Network -->
-  <rect x="50" y="150" width="370" height="120" fill="#1f2937" stroke="#10b981" stroke-width="2" rx="10">
-    <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" begin="0.5s" repeatCount="indefinite"/>
-  </rect>
-  <text x="235" y="170" text-anchor="middle" fill="#34d399" font-size="11" font-weight="bold">custom network (user-defined)</text>
-
-  <rect x="75" y="185" width="130" height="55" fill="#374151" stroke="#10b981" stroke-width="1" rx="6"/>
-  <text x="140" y="207" text-anchor="middle" fill="#d1d5db" font-size="10">Container 3</text>
-  <text x="140" y="225" text-anchor="middle" fill="#34d399" font-size="9" font-weight="bold">app</text>
-
-  <rect x="265" y="185" width="130" height="55" fill="#374151" stroke="#10b981" stroke-width="1" rx="6"/>
-  <text x="330" y="207" text-anchor="middle" fill="#d1d5db" font-size="10">Container 4</text>
-  <text x="330" y="225" text-anchor="middle" fill="#34d399" font-size="9" font-weight="bold">db</text>
-
-  <!-- Solid line: DNS by name -->
-  <line x1="205" y1="212" x2="265" y2="212" stroke="#10b981" stroke-width="2">
-    <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="1.5s" repeatCount="indefinite"/>
-  </line>
-  <polygon points="263,208 270,212 263,216" fill="#10b981"/>
-  <text x="235" y="252" text-anchor="middle" fill="#10b981" font-size="9">✅ DNS by name</text>
-
-  <!-- Host Network -->
-  <rect x="60" y="290" width="180" height="50" fill="#1f2937" stroke="#f59e0b" stroke-width="2" rx="10">
-    <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" begin="1s" repeatCount="indefinite"/>
-  </rect>
-  <text x="150" y="312" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="bold">host network</text>
-  <text x="150" y="330" text-anchor="middle" fill="#6b7280" font-size="9">No isolation, max performance</text>
-
-  <!-- None Network -->
-  <rect x="280" y="290" width="180" height="50" fill="#1f2937" stroke="#6b7280" stroke-width="2" rx="10"/>
-  <text x="370" y="312" text-anchor="middle" fill="#9ca3af" font-size="11" font-weight="bold">none network</text>
-  <text x="370" y="330" text-anchor="middle" fill="#6b7280" font-size="9">Complete isolation</text>
-
-  <!-- Overlay Network -->
-  <rect x="500" y="290" width="180" height="50" fill="#1f2937" stroke="#ec4899" stroke-width="2" rx="10">
-    <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" begin="1.5s" repeatCount="indefinite"/>
-  </rect>
-  <text x="590" y="312" text-anchor="middle" fill="#f472b6" font-size="11" font-weight="bold">overlay network</text>
-  <text x="590" y="330" text-anchor="middle" fill="#6b7280" font-size="9">Multi-host (Swarm)</text>
-
-  <text x="450" y="385" text-anchor="middle" fill="#4b5563" font-size="10">💡 Use custom networks for automatic DNS — containers can reach each other by name</text>
+<svg fill="none" viewBox="0 0 900 380" width="900" height="380" xmlns="http://www.w3.org/2000/svg">
+  <foreignObject width="100%" height="100%">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        @keyframes pulseGreen { 0%,100%{border-color:#22c55e} 50%{border-color:#16a34a} }
+        @keyframes pulseBlue { 0%,100%{border-color:#3b82f6} 50%{border-color:#1d4ed8} }
+        @keyframes pulseOrange { 0%,100%{border-color:#f97316} 50%{border-color:#ea580c} }
+        .wrap{background:#0d1117;font-family:Arial,sans-serif;color:#e5e7eb;padding:12px;box-sizing:border-box;width:900px;height:380px;display:flex;flex-direction:column;gap:8px}
+        .cloud{background:#1f2937;border:2px dashed #9ca3af;border-radius:20px;padding:6px 16px;text-align:center;font-size:12px;align-self:center}
+        .arrow-down{text-align:center;font-size:11px;color:#f97316}
+        .host-box{border:2px solid #6b7280;border-radius:8px;padding:8px;background:#1f2937;flex:1;display:flex;flex-direction:column;gap:8px}
+        .host-label{font-size:13px;font-weight:bold;color:#9ca3af;text-align:center}
+        .networks{display:flex;gap:10px;flex:1}
+        .network{border:2px solid;border-radius:8px;padding:8px;flex:1;display:flex;flex-direction:column;gap:6px}
+        .custom{border-color:#22c55e;animation:pulseGreen 3s infinite;background:#0d1117}
+        .bridge{border-color:#3b82f6;animation:pulseBlue 3s infinite;background:#0d1117}
+        .net-title{font-size:11px;font-weight:bold;text-align:center}
+        .containers{display:flex;gap:6px;justify-content:center}
+        .container{background:#374151;border-radius:6px;padding:6px 10px;font-size:10px;text-align:center}
+        .conn{text-align:center;font-size:10px;margin-top:4px}
+        .conn-dns{color:#22c55e}
+        .conn-no{color:#ef4444;border-top:1px dashed #ef4444;padding-top:3px;margin:0 10px}
+        .bottom-row{display:flex;gap:8px;justify-content:center}
+        .net-type{background:#374151;border:1px solid #6b7280;border-radius:6px;padding:5px 12px;font-size:10px;text-align:center}
+      </style>
+      <div class="wrap">
+        <div class="cloud">☁️ Internet</div>
+        <div class="arrow-down">↓ Port mapping (-p 8080:80)</div>
+        <div class="host-box">
+          <div class="host-label">🐳 Docker Host</div>
+          <div class="networks">
+            <div class="network custom">
+              <div class="net-title" style="color:#22c55e">Custom Network</div>
+              <div class="containers">
+                <div class="container">📦 Container3<br/><span style="color:#22c55e">app</span></div>
+                <div class="container">📦 Container4<br/><span style="color:#22c55e">db</span></div>
+              </div>
+              <div class="conn conn-dns">← DNS by name →</div>
+            </div>
+            <div class="network bridge">
+              <div class="net-title" style="color:#3b82f6">Bridge Network (default)</div>
+              <div class="containers">
+                <div class="container">📦 Container1</div>
+                <div class="container">📦 Container2</div>
+              </div>
+              <div class="conn conn-no">✗ No DNS resolution</div>
+            </div>
+          </div>
+        </div>
+        <div class="bottom-row">
+          <div class="net-type">🌐 <strong>host</strong><br/>No isolation</div>
+          <div class="net-type">🚫 <strong>none</strong><br/>No network</div>
+          <div class="net-type">🔗 <strong>overlay</strong><br/>Multi-host (Swarm)</div>
+          <div class="net-type">📡 <strong>macvlan</strong><br/>Physical MAC</div>
+        </div>
+      </div>
+    </div>
+  </foreignObject>
 </svg>

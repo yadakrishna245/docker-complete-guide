@@ -1,103 +1,51 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" font-family="Arial, sans-serif">
-  <rect width="900" height="420" fill="#0d1117" rx="12"/>
-  <text x="450" y="30" text-anchor="middle" fill="#58a6ff" font-size="16" font-weight="bold">🚫 Troubleshooting: Container Won't Start</text>
-
-  <!-- Problem -->
-  <rect x="350" y="45" width="200" height="40" fill="#1f2937" stroke="#ef4444" stroke-width="2" rx="8">
-    <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
-  </rect>
-  <text x="450" y="70" text-anchor="middle" fill="#fca5a5" font-size="11" font-weight="bold">Container won't start</text>
-
-  <!-- Arrow down -->
-  <line x1="450" y1="85" x2="450" y2="105" stroke="#ef4444" stroke-width="2" stroke-dasharray="4,2">
-    <animate attributeName="stroke-dashoffset" values="12;0" dur="0.6s" repeatCount="indefinite"/>
-  </line>
-  <polygon points="445,105 450,113 455,105" fill="#ef4444"/>
-
-  <!-- Check docker ps -a -->
-  <rect x="355" y="115" width="190" height="35" fill="#1f2937" stroke="#3b82f6" stroke-width="2" rx="6"/>
-  <text x="450" y="137" text-anchor="middle" fill="#60a5fa" font-size="10" font-weight="bold">docker ps -a → check status</text>
-
-  <!-- Branch: Created -->
-  <line x1="385" y1="150" x2="200" y2="180" stroke="#6b7280" stroke-width="1.5" stroke-dasharray="4,2">
-    <animate attributeName="stroke-dashoffset" values="12;0" dur="0.6s" repeatCount="indefinite"/>
-  </line>
-  <text x="280" y="163" fill="#9ca3af" font-size="8">Status: Created</text>
-  <rect x="100" y="180" width="200" height="30" fill="#1f2937" stroke="#f59e0b" stroke-width="1.5" rx="6"/>
-  <text x="200" y="200" text-anchor="middle" fill="#fcd34d" font-size="9">docker logs → docker run -it bash</text>
-
-  <!-- Branch: Exited -->
-  <line x1="515" y1="150" x2="600" y2="180" stroke="#6b7280" stroke-width="1.5" stroke-dasharray="4,2">
-    <animate attributeName="stroke-dashoffset" values="12;0" dur="0.6s" repeatCount="indefinite"/>
-  </line>
-  <text x="575" y="163" fill="#9ca3af" font-size="8">Status: Exited</text>
-  <rect x="530" y="180" width="150" height="30" fill="#1f2937" stroke="#f59e0b" stroke-width="1.5" rx="6"/>
-  <text x="605" y="200" text-anchor="middle" fill="#fcd34d" font-size="9">Check exit code ↓</text>
-
-  <!-- Exit codes -->
-  <line x1="605" y1="210" x2="605" y2="230" stroke="#f59e0b" stroke-width="1.5"/>
-
-  <!-- Exit 0 -->
-  <rect x="30" y="240" width="115" height="55" fill="#1f2937" stroke="#10b981" stroke-width="1.5" rx="6"/>
-  <text x="88" y="258" text-anchor="middle" fill="#6ee7b7" font-size="10" font-weight="bold">Exit 0</text>
-  <text x="88" y="275" text-anchor="middle" fill="#6b7280" font-size="8">App finished OK</text>
-  <text x="88" y="288" text-anchor="middle" fill="#6b7280" font-size="8">Check CMD</text>
-
-  <!-- Exit 1 -->
-  <rect x="155" y="240" width="115" height="55" fill="#1f2937" stroke="#ef4444" stroke-width="1.5" rx="6"/>
-  <text x="213" y="258" text-anchor="middle" fill="#fca5a5" font-size="10" font-weight="bold">Exit 1</text>
-  <text x="213" y="275" text-anchor="middle" fill="#6b7280" font-size="8">App error</text>
-  <text x="213" y="288" text-anchor="middle" fill="#6b7280" font-size="8">Check logs</text>
-
-  <!-- Exit 125 -->
-  <rect x="280" y="240" width="115" height="55" fill="#1f2937" stroke="#ef4444" stroke-width="1.5" rx="6"/>
-  <text x="338" y="258" text-anchor="middle" fill="#fca5a5" font-size="10" font-weight="bold">Exit 125</text>
-  <text x="338" y="275" text-anchor="middle" fill="#6b7280" font-size="8">Daemon error</text>
-  <text x="338" y="288" text-anchor="middle" fill="#6b7280" font-size="8">Check service</text>
-
-  <!-- Exit 126 -->
-  <rect x="405" y="240" width="115" height="55" fill="#1f2937" stroke="#f59e0b" stroke-width="1.5" rx="6"/>
-  <text x="463" y="258" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="bold">Exit 126</text>
-  <text x="463" y="275" text-anchor="middle" fill="#6b7280" font-size="8">Can't run cmd</text>
-  <text x="463" y="288" text-anchor="middle" fill="#6b7280" font-size="8">Check perms</text>
-
-  <!-- Exit 127 -->
-  <rect x="530" y="240" width="115" height="55" fill="#1f2937" stroke="#f59e0b" stroke-width="1.5" rx="6"/>
-  <text x="588" y="258" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="bold">Exit 127</text>
-  <text x="588" y="275" text-anchor="middle" fill="#6b7280" font-size="8">Cmd not found</text>
-  <text x="588" y="288" text-anchor="middle" fill="#6b7280" font-size="8">Check PATH</text>
-
-  <!-- Exit 137 -->
-  <rect x="655" y="240" width="115" height="55" fill="#1f2937" stroke="#ef4444" stroke-width="2" rx="6">
-    <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="1.5s" repeatCount="indefinite"/>
-  </rect>
-  <text x="713" y="258" text-anchor="middle" fill="#fca5a5" font-size="10" font-weight="bold">Exit 137</text>
-  <text x="713" y="275" text-anchor="middle" fill="#6b7280" font-size="8">OOM Killed</text>
-  <text x="713" y="288" text-anchor="middle" fill="#ef4444" font-size="8">Increase -m</text>
-
-  <!-- Exit 143 -->
-  <rect x="780" y="240" width="100" height="55" fill="#1f2937" stroke="#10b981" stroke-width="1.5" rx="6"/>
-  <text x="830" y="258" text-anchor="middle" fill="#6ee7b7" font-size="10" font-weight="bold">Exit 143</text>
-  <text x="830" y="275" text-anchor="middle" fill="#6b7280" font-size="8">SIGTERM</text>
-  <text x="830" y="288" text-anchor="middle" fill="#6b7280" font-size="8">Graceful stop</text>
-
-  <!-- Lines to exit codes -->
-  <line x1="605" y1="230" x2="88" y2="240" stroke="#6b7280" stroke-width="1"/>
-  <line x1="605" y1="230" x2="213" y2="240" stroke="#6b7280" stroke-width="1"/>
-  <line x1="605" y1="230" x2="338" y2="240" stroke="#6b7280" stroke-width="1"/>
-  <line x1="605" y1="230" x2="463" y2="240" stroke="#6b7280" stroke-width="1"/>
-  <line x1="605" y1="230" x2="588" y2="240" stroke="#6b7280" stroke-width="1"/>
-  <line x1="605" y1="230" x2="713" y2="240" stroke="#6b7280" stroke-width="1"/>
-  <line x1="605" y1="230" x2="830" y2="240" stroke="#6b7280" stroke-width="1"/>
-
-  <!-- Solutions row -->
-  <text x="450" y="330" text-anchor="middle" fill="#58a6ff" font-size="12" font-weight="bold">Quick Fixes</text>
-  <rect x="50" y="340" width="250" height="35" fill="#1f2937" stroke="#10b981" stroke-width="1.5" rx="6"/>
-  <text x="175" y="362" text-anchor="middle" fill="#6ee7b7" font-size="9">docker logs container_name</text>
-  <rect x="320" y="340" width="260" height="35" fill="#1f2937" stroke="#10b981" stroke-width="1.5" rx="6"/>
-  <text x="450" y="362" text-anchor="middle" fill="#6ee7b7" font-size="9">docker run -it image /bin/bash</text>
-  <rect x="600" y="340" width="270" height="35" fill="#1f2937" stroke="#10b981" stroke-width="1.5" rx="6"/>
-  <text x="735" y="362" text-anchor="middle" fill="#6ee7b7" font-size="9">docker inspect -f '{{.State.ExitCode}}' name</text>
-
-  <text x="450" y="405" text-anchor="middle" fill="#4b5563" font-size="10">Always check logs first → then exit code → then run interactively</text>
+<svg fill="none" viewBox="0 0 900 380" width="900" height="380" xmlns="http://www.w3.org/2000/svg">
+  <foreignObject width="100%" height="100%">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        @keyframes pulseRed { 0%,100%{border-color:#dc2626} 50%{border-color:#991b1b} }
+        @keyframes pulseGreen { 0%,100%{border-color:#16a34a} 50%{border-color:#166534} }
+        .wrap{background:#0d1117;padding:16px;font-family:Arial,sans-serif;color:#e5e7eb;display:flex;flex-direction:column;gap:10px;align-items:center;min-height:348px}
+        .problem{background:#1f2937;border:2px solid #dc2626;border-radius:8px;padding:8px 16px;animation:pulseRed 2s infinite;font-weight:bold;font-size:14px}
+        .card{background:#1f2937;border:1px solid #374151;border-radius:8px;padding:8px 12px;font-size:12px;text-align:center}
+        .solution{background:#1f2937;border:2px solid #16a34a;border-radius:8px;padding:8px 12px;font-size:11px;animation:pulseGreen 2s infinite}
+        .row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;align-items:flex-start}
+        .arrow{color:#6b7280;font-size:14px}
+        .code{background:#374151;border-radius:4px;padding:2px 6px;font-family:monospace;font-size:11px;color:#60a5fa}
+        .exit-box{background:#374151;border-radius:6px;padding:6px 10px;font-size:11px;text-align:center;min-width:70px}
+        .warn{color:#f59e0b}
+        .col{display:flex;flex-direction:column;gap:6px;align-items:center}
+      </style>
+      <div class="wrap">
+        <div class="problem">❌ Container Won't Start</div>
+        <div class="arrow">↓</div>
+        <div class="card"><span class="code">docker ps -a</span> — Check container status</div>
+        <div class="arrow">↓</div>
+        <div class="row">
+          <div class="col">
+            <div class="card"><b>Status: Created</b><br/>Never started</div>
+            <div class="arrow">↓</div>
+            <div class="solution"><span class="code">docker logs &lt;id&gt;</span><br/>Check for config errors</div>
+          </div>
+          <div class="col">
+            <div class="card"><b>Status: Exited</b><br/>Started then stopped</div>
+            <div class="arrow">↓</div>
+            <div class="solution"><span class="code">docker inspect &lt;id&gt;</span><br/>Check exit code</div>
+          </div>
+        </div>
+        <div class="arrow">↓ Exit Codes Reference</div>
+        <div class="row">
+          <div class="exit-box"><b>0</b><br/>OK</div>
+          <div class="exit-box"><b>1</b><br/>App Error</div>
+          <div class="exit-box"><b>125</b><br/>Daemon</div>
+          <div class="exit-box"><b>126</b><br/>Perms</div>
+          <div class="exit-box"><b>127</b><br/>Not Found</div>
+          <div class="exit-box"><b>137</b><br/><span class="warn">OOM ⚠️</span></div>
+          <div class="exit-box"><b>143</b><br/>SIGTERM</div>
+        </div>
+        <div class="row" style="margin-top:4px">
+          <div class="solution">Quick Fix: <span class="code">docker logs &lt;id&gt;</span> → <span class="code">docker rm &lt;id&gt;</span> → Fix issue → <span class="code">docker run</span> again</div>
+        </div>
+      </div>
+    </div>
+  </foreignObject>
 </svg>

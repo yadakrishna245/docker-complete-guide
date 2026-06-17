@@ -1,64 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" font-family="Arial, sans-serif">
-  <rect width="900" height="300" fill="#0d1117" rx="12"/>
-  <text x="450" y="30" text-anchor="middle" fill="#58a6ff" font-size="16" font-weight="bold">🔄 Troubleshooting: Container Keeps Restarting</text>
-
-  <!-- Problem -->
-  <rect x="350" y="45" width="200" height="35" fill="#1f2937" stroke="#ef4444" stroke-width="2" rx="8">
-    <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
-  </rect>
-  <text x="450" y="67" text-anchor="middle" fill="#fca5a5" font-size="11" font-weight="bold">Container restart loop</text>
-
-  <!-- Step 1: Check logs -->
-  <line x1="450" y1="80" x2="450" y2="100" stroke="#ef4444" stroke-width="2" stroke-dasharray="4,2">
-    <animate attributeName="stroke-dashoffset" values="12;0" dur="0.6s" repeatCount="indefinite"/>
-  </line>
-  <rect x="330" y="100" width="240" height="30" fill="#1f2937" stroke="#3b82f6" stroke-width="2" rx="6"/>
-  <text x="450" y="119" text-anchor="middle" fill="#60a5fa" font-size="10" font-weight="bold">docker logs --tail 50 container</text>
-
-  <!-- Error visible? -->
-  <line x1="450" y1="130" x2="450" y2="150" stroke="#3b82f6" stroke-width="1.5"/>
-  <rect x="380" y="150" width="140" height="25" fill="#374151" rx="5"/>
-  <text x="450" y="167" text-anchor="middle" fill="#d1d5db" font-size="9">Error visible?</text>
-
-  <!-- Yes branch (left) -->
-  <line x1="400" y1="175" x2="250" y2="195" stroke="#10b981" stroke-width="1.5" stroke-dasharray="4,2">
-    <animate attributeName="stroke-dashoffset" values="12;0" dur="0.6s" repeatCount="indefinite"/>
-  </line>
-  <text x="310" y="188" fill="#10b981" font-size="8">Yes</text>
-
-  <rect x="30" y="200" width="130" height="45" fill="#1f2937" stroke="#10b981" stroke-width="1.5" rx="6"/>
-  <text x="95" y="218" text-anchor="middle" fill="#6ee7b7" font-size="9" font-weight="bold">App crash</text>
-  <text x="95" y="235" text-anchor="middle" fill="#6b7280" font-size="8">Fix code/config</text>
-
-  <rect x="170" y="200" width="130" height="45" fill="#1f2937" stroke="#10b981" stroke-width="1.5" rx="6"/>
-  <text x="235" y="218" text-anchor="middle" fill="#6ee7b7" font-size="9" font-weight="bold">Port in use</text>
-  <text x="235" y="235" text-anchor="middle" fill="#6b7280" font-size="8">Change port</text>
-
-  <rect x="310" y="200" width="130" height="45" fill="#1f2937" stroke="#10b981" stroke-width="1.5" rx="6"/>
-  <text x="375" y="218" text-anchor="middle" fill="#6ee7b7" font-size="9" font-weight="bold">OOM</text>
-  <text x="375" y="235" text-anchor="middle" fill="#6b7280" font-size="8">Increase -m 1g</text>
-
-  <!-- No branch (right) -->
-  <line x1="500" y1="175" x2="680" y2="195" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4,2">
-    <animate attributeName="stroke-dashoffset" values="12;0" dur="0.6s" repeatCount="indefinite"/>
-  </line>
-  <text x="600" y="188" fill="#ef4444" font-size="8">No error</text>
-
-  <rect x="580" y="200" width="180" height="30" fill="#374151" rx="5"/>
-  <text x="670" y="219" text-anchor="middle" fill="#d1d5db" font-size="9">Check exit code →</text>
-
-  <!-- Exit codes right side -->
-  <rect x="580" y="240" width="90" height="35" fill="#1f2937" stroke="#ef4444" stroke-width="1.5" rx="6"/>
-  <text x="625" y="255" text-anchor="middle" fill="#fca5a5" font-size="9" font-weight="bold">137</text>
-  <text x="625" y="270" text-anchor="middle" fill="#6b7280" font-size="8">OOM → -m</text>
-
-  <rect x="680" y="240" width="90" height="35" fill="#1f2937" stroke="#f59e0b" stroke-width="1.5" rx="6"/>
-  <text x="725" y="255" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="bold">1</text>
-  <text x="725" y="270" text-anchor="middle" fill="#6b7280" font-size="8">App error</text>
-
-  <rect x="780" y="240" width="100" height="35" fill="#1f2937" stroke="#10b981" stroke-width="1.5" rx="6"/>
-  <text x="830" y="255" text-anchor="middle" fill="#6ee7b7" font-size="9" font-weight="bold">0</text>
-  <text x="830" y="270" text-anchor="middle" fill="#6b7280" font-size="8">CMD exits → fix</text>
-
-  <text x="450" y="293" text-anchor="middle" fill="#4b5563" font-size="10">💡 CMD must be a long-running process (not a script that exits immediately)</text>
+<svg fill="none" viewBox="0 0 900 270" width="900" height="270" xmlns="http://www.w3.org/2000/svg">
+  <foreignObject width="100%" height="100%">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        @keyframes pulseRed { 0%,100%{border-color:#dc2626} 50%{border-color:#991b1b} }
+        @keyframes pulseGreen { 0%,100%{border-color:#16a34a} 50%{border-color:#166534} }
+        .wrap{background:#0d1117;padding:16px;font-family:Arial,sans-serif;color:#e5e7eb;display:flex;flex-direction:column;gap:10px;align-items:center;min-height:238px}
+        .problem{background:#1f2937;border:2px solid #dc2626;border-radius:8px;padding:8px 16px;animation:pulseRed 2s infinite;font-weight:bold;font-size:14px}
+        .card{background:#1f2937;border:1px solid #374151;border-radius:8px;padding:8px 12px;font-size:12px;text-align:center}
+        .solution{background:#1f2937;border:2px solid #16a34a;border-radius:8px;padding:6px 10px;font-size:11px;animation:pulseGreen 2s infinite;text-align:center}
+        .row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;align-items:flex-start}
+        .arrow{color:#6b7280;font-size:14px}
+        .code{background:#374151;border-radius:4px;padding:2px 6px;font-family:monospace;font-size:11px;color:#60a5fa}
+        .col{display:flex;flex-direction:column;gap:6px;align-items:center}
+      </style>
+      <div class="wrap">
+        <div class="problem">🔄 Container Restart Loop</div>
+        <div class="arrow">↓</div>
+        <div class="card"><span class="code">docker logs --tail 50 &lt;id&gt;</span></div>
+        <div class="arrow">↓ Error visible?</div>
+        <div class="row">
+          <div class="col">
+            <div class="card"><b>Yes — Error Found</b></div>
+            <div class="arrow">↓</div>
+            <div class="solution">Crash → fix code<br/>Port conflict → change port<br/>OOM → increase memory</div>
+          </div>
+          <div class="col">
+            <div class="card"><b>No — Check Exit Code</b></div>
+            <div class="arrow">↓</div>
+            <div class="row">
+              <div class="solution"><b>137</b><br/>OOM killed<br/><span class="code">-m 512m</span></div>
+              <div class="solution"><b>1</b><br/>App error<br/>Debug app</div>
+              <div class="solution"><b>0</b><br/>CMD exits<br/>Needs long-running<br/>process (e.g. <span class="code">tail -f</span>)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </foreignObject>
 </svg>

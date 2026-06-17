@@ -1,96 +1,46 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" font-family="Arial, sans-serif">
-  <rect width="900" height="360" fill="#0d1117" rx="12"/>
-  <text x="450" y="30" text-anchor="middle" fill="#58a6ff" font-size="16" font-weight="bold">🌐 Troubleshooting: Network Issues</text>
-
-  <!-- Problem -->
-  <rect x="350" y="45" width="200" height="35" fill="#1f2937" stroke="#ef4444" stroke-width="2" rx="8">
-    <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
-  </rect>
-  <text x="450" y="67" text-anchor="middle" fill="#fca5a5" font-size="11" font-weight="bold">Container network issue</text>
-
-  <!-- Three branches -->
-  <line x1="370" y1="80" x2="150" y2="115" stroke="#6b7280" stroke-width="1.5" stroke-dasharray="4,2">
-    <animate attributeName="stroke-dashoffset" values="12;0" dur="0.6s" repeatCount="indefinite"/>
-  </line>
-  <line x1="450" y1="80" x2="450" y2="115" stroke="#6b7280" stroke-width="1.5" stroke-dasharray="4,2">
-    <animate attributeName="stroke-dashoffset" values="12;0" dur="0.6s" repeatCount="indefinite"/>
-  </line>
-  <line x1="530" y1="80" x2="750" y2="115" stroke="#6b7280" stroke-width="1.5" stroke-dasharray="4,2">
-    <animate attributeName="stroke-dashoffset" values="12;0" dur="0.6s" repeatCount="indefinite"/>
-  </line>
-
-  <!-- Branch A: Can't reach internet -->
-  <rect x="30" y="115" width="240" height="35" fill="#1f2937" stroke="#3b82f6" stroke-width="2" rx="8"/>
-  <text x="150" y="137" text-anchor="middle" fill="#60a5fa" font-size="10" font-weight="bold">Can't reach internet</text>
-
-  <line x1="150" y1="150" x2="150" y2="175" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="4,2">
-    <animate attributeName="stroke-dashoffset" values="12;0" dur="0.6s" repeatCount="indefinite"/>
-  </line>
-  <rect x="40" y="175" width="220" height="30" fill="#374151" rx="5"/>
-  <text x="150" y="194" text-anchor="middle" fill="#d1d5db" font-size="9">ping 8.8.8.8 from container</text>
-
-  <line x1="100" y1="205" x2="80" y2="230" stroke="#6b7280" stroke-width="1"/>
-  <line x1="200" y1="205" x2="220" y2="230" stroke="#6b7280" stroke-width="1"/>
-  <text x="70" y="225" fill="#9ca3af" font-size="8">Timeout</text>
-  <text x="210" y="225" fill="#9ca3af" font-size="8">Works</text>
-
-  <rect x="20" y="235" width="140" height="40" fill="#1f2937" stroke="#10b981" stroke-width="1.5" rx="6"/>
-  <text x="90" y="252" text-anchor="middle" fill="#6ee7b7" font-size="9">Fix: Check DNS</text>
-  <text x="90" y="267" text-anchor="middle" fill="#6b7280" font-size="8">--dns 8.8.8.8</text>
-
-  <rect x="170" y="235" width="120" height="40" fill="#1f2937" stroke="#10b981" stroke-width="1.5" rx="6"/>
-  <text x="230" y="252" text-anchor="middle" fill="#6ee7b7" font-size="9">DNS issue</text>
-  <text x="230" y="267" text-anchor="middle" fill="#6b7280" font-size="8">--dns 8.8.8.8</text>
-
-  <!-- Branch B: Containers can't talk -->
-  <rect x="320" y="115" width="260" height="35" fill="#1f2937" stroke="#f59e0b" stroke-width="2" rx="8"/>
-  <text x="450" y="137" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="bold">Containers can't communicate</text>
-
-  <line x1="450" y1="150" x2="450" y2="175" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4,2">
-    <animate attributeName="stroke-dashoffset" values="12;0" dur="0.6s" repeatCount="indefinite"/>
-  </line>
-  <rect x="370" y="175" width="160" height="30" fill="#374151" rx="5"/>
-  <text x="450" y="194" text-anchor="middle" fill="#d1d5db" font-size="9">Same network?</text>
-
-  <line x1="400" y1="205" x2="370" y2="230" stroke="#6b7280" stroke-width="1"/>
-  <line x1="500" y1="205" x2="530" y2="230" stroke="#6b7280" stroke-width="1"/>
-  <text x="365" y="225" fill="#9ca3af" font-size="8">No</text>
-  <text x="525" y="225" fill="#9ca3af" font-size="8">Yes</text>
-
-  <rect x="310" y="235" width="130" height="40" fill="#1f2937" stroke="#10b981" stroke-width="1.5" rx="6"/>
-  <text x="375" y="252" text-anchor="middle" fill="#6ee7b7" font-size="9">Fix: Connect to</text>
-  <text x="375" y="267" text-anchor="middle" fill="#6b7280" font-size="8">same network</text>
-
-  <rect x="460" y="235" width="155" height="40" fill="#1f2937" stroke="#f59e0b" stroke-width="1.5" rx="6"/>
-  <text x="538" y="252" text-anchor="middle" fill="#fcd34d" font-size="9">Default bridge?</text>
-  <text x="538" y="267" text-anchor="middle" fill="#6b7280" font-size="8">→ Use custom network</text>
-
-  <!-- Branch C: Port not accessible -->
-  <rect x="640" y="115" width="230" height="35" fill="#1f2937" stroke="#ec4899" stroke-width="2" rx="8"/>
-  <text x="755" y="137" text-anchor="middle" fill="#f472b6" font-size="10" font-weight="bold">Port not accessible from host</text>
-
-  <line x1="755" y1="150" x2="755" y2="175" stroke="#ec4899" stroke-width="1.5" stroke-dasharray="4,2">
-    <animate attributeName="stroke-dashoffset" values="12;0" dur="0.6s" repeatCount="indefinite"/>
-  </line>
-  <rect x="680" y="175" width="150" height="30" fill="#374151" rx="5"/>
-  <text x="755" y="194" text-anchor="middle" fill="#d1d5db" font-size="9">docker port container</text>
-
-  <line x1="720" y1="205" x2="700" y2="230" stroke="#6b7280" stroke-width="1"/>
-  <line x1="790" y1="205" x2="810" y2="230" stroke="#6b7280" stroke-width="1"/>
-  <text x="690" y="225" fill="#9ca3af" font-size="8">No ports</text>
-  <text x="810" y="225" fill="#9ca3af" font-size="8">Mapped</text>
-
-  <rect x="640" y="235" width="120" height="40" fill="#1f2937" stroke="#10b981" stroke-width="1.5" rx="6"/>
-  <text x="700" y="252" text-anchor="middle" fill="#6ee7b7" font-size="9">Fix: Add -p flag</text>
-  <text x="700" y="267" text-anchor="middle" fill="#6b7280" font-size="8">-p 8080:80</text>
-
-  <rect x="770" y="235" width="110" height="40" fill="#1f2937" stroke="#f59e0b" stroke-width="1.5" rx="6"/>
-  <text x="825" y="252" text-anchor="middle" fill="#fcd34d" font-size="9">Check firewall</text>
-  <text x="825" y="267" text-anchor="middle" fill="#6b7280" font-size="8">or port conflict</text>
-
-  <!-- Quick commands -->
-  <rect x="100" y="300" width="700" height="35" fill="#1f2937" stroke="#30363d" stroke-width="1" rx="6"/>
-  <text x="450" y="322" text-anchor="middle" fill="#9ca3af" font-size="9">Quick: docker exec container ping 8.8.8.8 | docker exec container nslookup service | docker network inspect bridge</text>
-
-  <text x="450" y="350" text-anchor="middle" fill="#4b5563" font-size="10">💡 Custom networks provide DNS — containers resolve each other by name</text>
+<svg fill="none" viewBox="0 0 900 320" width="900" height="320" xmlns="http://www.w3.org/2000/svg">
+  <foreignObject width="100%" height="100%">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        @keyframes pulseRed { 0%,100%{border-color:#dc2626} 50%{border-color:#991b1b} }
+        @keyframes pulseGreen { 0%,100%{border-color:#16a34a} 50%{border-color:#166534} }
+        .wrap{background:#0d1117;padding:16px;font-family:Arial,sans-serif;color:#e5e7eb;display:flex;flex-direction:column;gap:10px;align-items:center;min-height:288px}
+        .problem{background:#1f2937;border:2px solid #dc2626;border-radius:8px;padding:8px 16px;animation:pulseRed 2s infinite;font-weight:bold;font-size:14px}
+        .card{background:#1f2937;border:1px solid #374151;border-radius:8px;padding:8px 12px;font-size:12px;text-align:center}
+        .solution{background:#1f2937;border:2px solid #16a34a;border-radius:8px;padding:6px 10px;font-size:11px;animation:pulseGreen 2s infinite;text-align:center}
+        .row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;align-items:flex-start}
+        .arrow{color:#6b7280;font-size:14px}
+        .code{background:#374151;border-radius:4px;padding:2px 6px;font-family:monospace;font-size:11px;color:#60a5fa}
+        .col{display:flex;flex-direction:column;gap:6px;align-items:center}
+        .label{font-size:11px;color:#9ca3af}
+      </style>
+      <div class="wrap">
+        <div class="problem">🌐 Network Issue</div>
+        <div class="arrow">↓</div>
+        <div class="row">
+          <div class="col">
+            <div class="card"><b>A) Can't Reach Internet</b></div>
+            <div class="arrow">↓</div>
+            <div class="card"><span class="code">docker exec ping 8.8.8.8</span></div>
+            <div class="arrow">↓</div>
+            <div class="solution">DNS Fix:<br/><span class="code">--dns 8.8.8.8</span><br/>or edit <span class="code">/etc/resolv.conf</span></div>
+          </div>
+          <div class="col">
+            <div class="card"><b>B) Containers Can't Talk</b></div>
+            <div class="arrow">↓</div>
+            <div class="card">Same network?<br/><span class="code">docker network inspect</span></div>
+            <div class="arrow">↓</div>
+            <div class="solution">Use custom network:<br/><span class="code">docker network create mynet</span><br/><span class="code">--network mynet</span></div>
+          </div>
+          <div class="col">
+            <div class="card"><b>C) Port Not Accessible</b></div>
+            <div class="arrow">↓</div>
+            <div class="card"><span class="code">docker port &lt;id&gt;</span></div>
+            <div class="arrow">↓</div>
+            <div class="solution">Add <span class="code">-p host:container</span><br/>or check firewall rules</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </foreignObject>
 </svg>

@@ -1,121 +1,48 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 380" font-family="Arial, sans-serif">
-  <rect width="900" height="380" fill="#0d1117" rx="12"/>
-  <text x="450" y="30" text-anchor="middle" fill="#58a6ff" font-size="16" font-weight="bold">ECR Complete Workflow</text>
-
-  <!-- Step 1 -->
-  <rect x="50" y="50" width="145" height="45" fill="#1f2937" stroke="#10b981" stroke-width="2" rx="8">
-    <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" repeatCount="indefinite"/>
-  </rect>
-  <text x="123" y="77" text-anchor="middle" fill="#6ee7b7" font-size="10" font-weight="bold">1. Create ECR Repo</text>
-
-  <!-- Arrow 1→2 -->
-  <line x1="195" y1="73" x2="235" y2="73" stroke="#10b981" stroke-width="2" stroke-dasharray="5,3">
-    <animate attributeName="stroke-dashoffset" values="16;0" dur="0.7s" repeatCount="indefinite"/>
-  </line>
-  <polygon points="235,69 243,73 235,77" fill="#10b981"/>
-
-  <!-- Step 2 -->
-  <rect x="245" y="50" width="155" height="45" fill="#1f2937" stroke="#10b981" stroke-width="2" rx="8">
-    <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" begin="0.3s" repeatCount="indefinite"/>
-  </rect>
-  <text x="323" y="77" text-anchor="middle" fill="#6ee7b7" font-size="10" font-weight="bold">2. Authenticate Docker</text>
-
-  <!-- Arrow 2→3 -->
-  <line x1="400" y1="73" x2="440" y2="73" stroke="#10b981" stroke-width="2" stroke-dasharray="5,3">
-    <animate attributeName="stroke-dashoffset" values="16;0" dur="0.7s" repeatCount="indefinite"/>
-  </line>
-  <polygon points="440,69 448,73 440,77" fill="#10b981"/>
-
-  <!-- Step 3 -->
-  <rect x="450" y="50" width="155" height="45" fill="#1f2937" stroke="#10b981" stroke-width="2" rx="8">
-    <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" begin="0.6s" repeatCount="indefinite"/>
-  </rect>
-  <text x="528" y="77" text-anchor="middle" fill="#6ee7b7" font-size="10" font-weight="bold">3. Build Image Locally</text>
-
-  <!-- Arrow 3→4 -->
-  <line x1="605" y1="73" x2="645" y2="73" stroke="#10b981" stroke-width="2" stroke-dasharray="5,3">
-    <animate attributeName="stroke-dashoffset" values="16;0" dur="0.7s" repeatCount="indefinite"/>
-  </line>
-  <polygon points="645,69 653,73 645,77" fill="#10b981"/>
-
-  <!-- Step 4 -->
-  <rect x="655" y="50" width="120" height="45" fill="#1f2937" stroke="#10b981" stroke-width="2" rx="8">
-    <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" begin="0.9s" repeatCount="indefinite"/>
-  </rect>
-  <text x="715" y="77" text-anchor="middle" fill="#6ee7b7" font-size="10" font-weight="bold">4. Tag for ECR</text>
-
-  <!-- Arrow 4→5 (goes down) -->
-  <line x1="715" y1="95" x2="715" y2="125" stroke="#10b981" stroke-width="2" stroke-dasharray="5,3">
-    <animate attributeName="stroke-dashoffset" values="16;0" dur="0.7s" repeatCount="indefinite"/>
-  </line>
-  <polygon points="710,125 715,133 720,125" fill="#10b981"/>
-
-  <!-- Step 5: Push (center, larger) -->
-  <rect x="350" y="130" width="160" height="55" fill="#1f2937" stroke="#f59e0b" stroke-width="2.5" rx="10">
-    <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
-  </rect>
-  <text x="430" y="155" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="bold">5. 📤 Push to ECR</text>
-  <text x="430" y="173" text-anchor="middle" fill="#6b7280" font-size="9">docker push</text>
-
-  <!-- Arrow from Step 4 to Step 5 -->
-  <line x1="655" y1="120" x2="510" y2="145" stroke="#10b981" stroke-width="2" stroke-dasharray="5,3">
-    <animate attributeName="stroke-dashoffset" values="16;0" dur="0.7s" repeatCount="indefinite"/>
-  </line>
-
-  <!-- Arrows from Step 5 down -->
-  <line x1="390" y1="185" x2="200" y2="230" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6,3">
-    <animate attributeName="stroke-dashoffset" values="18;0" dur="0.8s" repeatCount="indefinite"/>
-  </line>
-  <polygon points="203,225 195,232 205,233" fill="#3b82f6"/>
-
-  <line x1="410" y1="185" x2="410" y2="230" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6,3">
-    <animate attributeName="stroke-dashoffset" values="18;0" dur="0.8s" repeatCount="indefinite"/>
-  </line>
-  <polygon points="405,230 410,238 415,230" fill="#3b82f6"/>
-
-  <line x1="450" y1="185" x2="590" y2="230" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6,3">
-    <animate attributeName="stroke-dashoffset" values="18;0" dur="0.8s" repeatCount="indefinite"/>
-  </line>
-  <polygon points="587,233 595,232 590,225" fill="#3b82f6"/>
-
-  <line x1="470" y1="185" x2="770" y2="230" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6,3">
-    <animate attributeName="stroke-dashoffset" values="18;0" dur="0.8s" repeatCount="indefinite"/>
-  </line>
-  <polygon points="767,233 775,232 770,225" fill="#3b82f6"/>
-
-  <!-- Step 6: Deploy -->
-  <rect x="100" y="240" width="180" height="50" fill="#1f2937" stroke="#3b82f6" stroke-width="2" rx="8">
-    <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" begin="1.2s" repeatCount="indefinite"/>
-  </rect>
-  <text x="190" y="262" text-anchor="middle" fill="#60a5fa" font-size="10" font-weight="bold">6. 🚀 Deploy to AWS</text>
-  <text x="190" y="280" text-anchor="middle" fill="#6b7280" font-size="9">ECS / EKS / Lambda / EC2</text>
-
-  <!-- Step 7: Lifecycle -->
-  <rect x="320" y="240" width="160" height="50" fill="#1f2937" stroke="#8b5cf6" stroke-width="2" rx="8">
-    <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" begin="1.5s" repeatCount="indefinite"/>
-  </rect>
-  <text x="400" y="262" text-anchor="middle" fill="#a78bfa" font-size="10" font-weight="bold">7. Lifecycle Policy</text>
-  <text x="400" y="280" text-anchor="middle" fill="#6b7280" font-size="9">Auto-cleanup old images</text>
-
-  <!-- Step 8: Scanning -->
-  <rect x="520" y="240" width="150" height="50" fill="#1f2937" stroke="#ec4899" stroke-width="2" rx="8">
-    <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" begin="1.8s" repeatCount="indefinite"/>
-  </rect>
-  <text x="595" y="262" text-anchor="middle" fill="#f472b6" font-size="10" font-weight="bold">8. Enable Scanning</text>
-  <text x="595" y="280" text-anchor="middle" fill="#6b7280" font-size="9">Vulnerability detection</text>
-
-  <!-- Step 9: Replication -->
-  <rect x="700" y="240" width="170" height="50" fill="#1f2937" stroke="#06b6d4" stroke-width="2" rx="8">
-    <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" begin="2.1s" repeatCount="indefinite"/>
-  </rect>
-  <text x="785" y="262" text-anchor="middle" fill="#22d3ee" font-size="10" font-weight="bold">9. Cross-Region</text>
-  <text x="785" y="280" text-anchor="middle" fill="#6b7280" font-size="9">Replication for DR</text>
-
-  <!-- Animated dot along main path -->
-  <circle r="4" fill="#10b981">
-    <animateMotion dur="5s" repeatCount="indefinite" path="M123,73 L323,73 L528,73 L715,73 L715,135 L430,155"/>
-    <animate attributeName="opacity" values="1;0.5;1" dur="1.5s" repeatCount="indefinite"/>
-  </circle>
-
-  <text x="450" y="330" text-anchor="middle" fill="#4b5563" font-size="10">Complete ECR pipeline: Create → Auth → Build → Tag → Push → Deploy + Governance</text>
+<svg fill="none" viewBox="0 0 900 350" width="900" height="350" xmlns="http://www.w3.org/2000/svg">
+  <foreignObject width="100%" height="100%">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        @keyframes pulseGreen { 0%,100%{border-color:#22c55e} 50%{border-color:#16a34a} }
+        @keyframes pulseBlue { 0%,100%{border-color:#3b82f6} 50%{border-color:#1d4ed8} }
+        @keyframes pulsePurple { 0%,100%{border-color:#a855f7} 50%{border-color:#7c3aed} }
+        @keyframes pulsePink { 0%,100%{border-color:#ec4899} 50%{border-color:#db2777} }
+        @keyframes pulseCyan { 0%,100%{border-color:#06b6d4} 50%{border-color:#0891b2} }
+        .wrap{background:#0d1117;font-family:Arial,sans-serif;color:#e5e7eb;padding:12px;box-sizing:border-box;width:900px;height:350px;display:flex;flex-direction:column;align-items:center;gap:6px}
+        .main-flow{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:center}
+        .step{background:#1f2937;border:2px solid #22c55e;animation:pulseGreen 3s infinite;border-radius:8px;padding:6px 12px;font-size:11px;text-align:center}
+        .step-num{color:#22c55e;font-weight:bold;font-size:12px}
+        .arrow-r{color:#22c55e;font-size:16px}
+        .push-step{background:#1f2937;border:3px solid #22c55e;animation:pulseGreen 2s infinite;border-radius:10px;padding:12px 20px;font-size:13px;text-align:center;font-weight:bold}
+        .branch-label{font-size:11px;color:#9ca3af;margin-top:4px}
+        .branches{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:4px}
+        .branch{border:2px solid;border-radius:8px;padding:8px 14px;font-size:11px;text-align:center;background:#1f2937}
+        .b-deploy{border-color:#3b82f6;animation:pulseBlue 3s infinite}
+        .b-lifecycle{border-color:#a855f7;animation:pulsePurple 3s infinite}
+        .b-scan{border-color:#ec4899;animation:pulsePink 3s infinite}
+        .b-region{border-color:#06b6d4;animation:pulseCyan 3s infinite}
+        .down-arrow{color:#22c55e;font-size:14px}
+      </style>
+      <div class="wrap">
+        <div class="main-flow">
+          <div class="step"><span class="step-num">1</span><br/>Create Repo</div>
+          <span class="arrow-r">→</span>
+          <div class="step"><span class="step-num">2</span><br/>Auth Docker</div>
+          <span class="arrow-r">→</span>
+          <div class="step"><span class="step-num">3</span><br/>Build Image</div>
+          <span class="arrow-r">→</span>
+          <div class="step"><span class="step-num">4</span><br/>Tag for ECR</div>
+        </div>
+        <div class="down-arrow">↓</div>
+        <div class="push-step"><span class="step-num">5</span> Push to ECR 🚀</div>
+        <div class="down-arrow">↓ ↓ ↓ ↓</div>
+        <div class="branch-label">Post-Push Actions</div>
+        <div class="branches">
+          <div class="branch b-deploy"><strong>6</strong> 🚀 Deploy<br/><span style="font-size:10px;color:#93c5fd">ECS / EKS / EC2</span></div>
+          <div class="branch b-lifecycle"><strong>7</strong> 🔄 Lifecycle Policy<br/><span style="font-size:10px;color:#c4b5fd">Auto-cleanup old images</span></div>
+          <div class="branch b-scan"><strong>8</strong> 🔍 Scanning<br/><span style="font-size:10px;color:#f9a8d4">Vulnerability detection</span></div>
+          <div class="branch b-region"><strong>9</strong> 🌍 Cross-Region<br/><span style="font-size:10px;color:#67e8f9">Replicate globally</span></div>
+        </div>
+      </div>
+    </div>
+  </foreignObject>
 </svg>
